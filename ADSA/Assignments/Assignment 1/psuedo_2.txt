@@ -60,7 +60,8 @@ ELSE
 
 
 Algorithm MERGE: Time Complexity O(n)
-MERGE(Array1, Array2):
+MERGE(Array1, Array2, l, m, r):
+// Array1.Length is m - l + 1, Array2.Length is r - m 
 Create a Duplicate array of Total Length:
     Temp <= Array of Size [ Array1.Length + Array2.Length ]
     index <= 0
