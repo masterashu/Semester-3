@@ -1,5 +1,5 @@
 /*
- * Algorith:
+ * Algorithm:
  * We Check All distinct pairs of people and
  * check if they were online at the same time
  * We check that person1 exited after person2 entered

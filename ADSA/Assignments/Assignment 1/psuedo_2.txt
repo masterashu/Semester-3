@@ -1,0 +1,75 @@
+Algorithm I:
+This Program will check how many unique no of pairs of students will be 
+available onilne based on thier entry and exit times
+
+Input:
+n = total no of students 
+people = [(entry, exit), ...]  Array defining a students' entry/exit time
+
+no_of_pairs = 0
+
+FOR i from 0 to n - 1:
+    FOR j from (i+1) to n - 1:
+        IF (person1.entry < person2.exit && person2.entry < person1.exit):
+        Increment no_of_pairs
+
+
+
+Algorithm II:
+This Program will check how many unique no of pairs of students will be 
+available onilne based on thier entry and exit times
+
+Input:
+n = total no of students 
+people = [(entry, exit), ...]  Array defining a students' entry/exit time
+
+no_of_pairs = 0
+
+MERGESORT people Array
+
+FOR i from 0 to n - 1:
+    val = people[i].exit
+    found_index = binary_search_exit(people, val)
+    no_of_pairs += found_index - i
+
+
+Algorithm MERGESORT:
+MERGESORT(arr[], l,  r)
+IF l == r
+    return
+ELSE
+    Find the middle point to divide the array into two halves:  
+        middle m = (l+r)/2
+    Call MERGESORT for first half:   
+        Call MERGESORT(arr, l, m)
+    Call MERGESORT for second half:
+        Call mergeSort(arr, m+1, r)
+    MERGE the two halves sorted in step 2 and 3:
+        Call MERGE(arr, l, m, r)
+
+
+Algorithm MERGE:
+MERGE:
+Create a Duplicate array of Total Length
+    Temp[ Array1.Length + Array2.Length ]
+    index = 0
+Initialize Index for both Array
+    i = 0, j = 0
+
+WHILE index < Temp.Length:
+    IF any Array becomes empty
+        IF i == Array1.Length :
+            Temp[index++] = Array2[j++]
+        IF j == Array2.Length :
+            Temp[index++] = Array1[i++]
+        CONTINUE
+
+    INSERT the lower Element
+    IF Array1[i] < Array2[j]:
+        Temp[index++] = Array1[i++]
+    ELSE
+        Temp[index++] = Array2[j++]
+
+
+
+
