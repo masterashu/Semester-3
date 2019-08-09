@@ -1,75 +1,103 @@
-Algorithm I:
+Algorithm I: Time Complexity O(n^2)
 This Program will check how many unique no of pairs of students will be 
 available onilne based on thier entry and exit times
 
-Input:
-n = total no of students 
-people = [(entry, exit), ...]  Array defining a students' entry/exit time
+The Algorithm Uses Two Nested Loops Which Go over N times
 
-no_of_pairs = 0
+Input:
+n <= total no of students 
+people <= [(entry, exit), ...]  Array defining a students' entry/exit time
+
+no_of_pairs <= 0
 
 FOR i from 0 to n - 1:
     FOR j from (i+1) to n - 1:
         IF (person1.entry < person2.exit && person2.entry < person1.exit):
-        Increment no_of_pairs
+        Increment no_of_pairs by 1
 
 
 
-Algorithm II:
+Algorithm II: Time Complexity O(n*log(n))
 This Program will check how many unique no of pairs of students will be 
 available onilne based on thier entry and exit times
 
+The First Part of the Problem User MERGESORT which takes O(n*log(n)) Time
+In Second Part we BINARYSEARCH the Value in Array over a loop so 
+net Complexity will be O(n) * O(log(n)) => O(n*log(n))
+
+
 Input:
-n = total no of students 
-people = [(entry, exit), ...]  Array defining a students' entry/exit time
+n <= Total no of students 
+Array defining a student structure with entry/exit time 
+people <= [(entry, exit), ...] 
 
-no_of_pairs = 0
+no_of_pairs <= 0
 
-MERGESORT people Array
+Apply MERGESORT on people Array
 
 FOR i from 0 to n - 1:
-    val = people[i].exit
-    found_index = binary_search_exit(people, val)
-    no_of_pairs += found_index - i
+    val <= people[i].exit
+    found_index <= binary_search_exit(people, val)
+    Increment no_of_pairs by found_ind1ex - i
 
 
-Algorithm MERGESORT:
+Algorithm MERGESORT: Time Complexity O(n*log(n))
 MERGESORT(arr[], l,  r)
 IF l == r
     return
 ELSE
     Find the middle point to divide the array into two halves:  
-        middle m = (l+r)/2
-    Call MERGESORT for first half:   
+        middle m <= (l+r)/2
+    Do MERGESORT for first half:
         Call MERGESORT(arr, l, m)
-    Call MERGESORT for second half:
+    Do MERGESORT for second half:
         Call mergeSort(arr, m+1, r)
     MERGE the two halves sorted in step 2 and 3:
         Call MERGE(arr, l, m, r)
 
 
-Algorithm MERGE:
-MERGE:
-Create a Duplicate array of Total Length
-    Temp[ Array1.Length + Array2.Length ]
-    index = 0
-Initialize Index for both Array
-    i = 0, j = 0
+Algorithm MERGE: Time Complexity O(n)
+MERGE(Array1, Array2):
+Create a Duplicate array of Total Length:
+    Temp <= Array of Size [ Array1.Length + Array2.Length ]
+    index <= 0
+Initialize Index for both Array:
+    i <= 0, j <= 0
 
 WHILE index < Temp.Length:
     IF any Array becomes empty
         IF i == Array1.Length :
-            Temp[index++] = Array2[j++]
+            Temp[index++] <= Array2[j++]
         IF j == Array2.Length :
-            Temp[index++] = Array1[i++]
+            Temp[index++] <= Array1[i++]
         CONTINUE
 
-    INSERT the lower Element
+    INSERT the lower Element:
     IF Array1[i] < Array2[j]:
-        Temp[index++] = Array1[i++]
+        Temp[index++] <= Array1[i++]
     ELSE
-        Temp[index++] = Array2[j++]
+        Temp[index++] <= Array2[j++]
 
 
 
+Algorithm BINARYSEARCH: Time Complexity O(log(n))
+This Program will search for the greatest no. less than or equal
+to the Value given in the Sorted Array
+
+BINARYSEARCH(Array, val)
+l <= 0, r <= Array.Length -1
+
+WHILE l < r:
+    GET Middle Element and compare with val
+        mid <= l + (r - l) / 2;
+        IF val is less than Array[mid]:
+            SEARCH for val in right half of sorted Array:
+                l <= mid + 1
+        ELSE
+            SEARCH for val in left half of sorted Array:
+                r <= mid
+IF Array[l] == val:
+    RETURN l
+ELSE
+    RETURN l - 1
 
