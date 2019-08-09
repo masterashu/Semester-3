@@ -36,9 +36,12 @@ no_of_pairs <= 0
 Apply MERGESORT on people Array
 
 FOR i from 0 to n - 1:
-    val <= people[i].exit
-    found_index <= binary_search_exit(people, val)
-    Increment no_of_pairs by found_ind1ex - i
+    GET Value When the i'th person Leaves
+        val <= people[i].exit
+    Find How many people were logged in before i'th person left
+        found_index <= binary_search_exit(people, val)
+    Add No. of Pairs of the respective person
+    Increment no_of_pairs by found_index - i
 
 
 Algorithm MERGESORT: Time Complexity O(n*log(n))
