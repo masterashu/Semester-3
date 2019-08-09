@@ -54,7 +54,7 @@ ELSE
     Do MERGESORT for first half:
         Call MERGESORT(arr, l, m)
     Do MERGESORT for second half:
-        Call mergeSort(arr, m+1, r)
+        Call MERGESORT(arr, m+1, r)
     MERGE the two halves sorted in step 2 and 3:
         Call MERGE(arr, l, m, r)
 

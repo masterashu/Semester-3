@@ -89,7 +89,8 @@ int main(int argc, char const *argv[])
 
     int begin = 0, end = 0, current_online = 0;
     for (int i = 0; i < noOfPeople; i++){
-        distinctPairs += binarySearchPersonEntry(people, people[i].exit - 1, i + 1, noOfPeople - 1) - i;
+        int k = binarySearchPersonEntry(people, people[i].exit - 1, i+1, noOfPeople-1) - i;
+        distinctPairs = k;
     }
     
     printf("No. of distinct pairs are: %d.\n", distinctPairs);
