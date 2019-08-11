@@ -1,0 +1,153 @@
+# To find the local minimum in a 2D array:
+FindLocalMinima2D(array A[][], startX, startY, endX, n)
+    if startX >= endX:
+        return A[startY][startY]
+
+    min = arr[startY][startX]
+    minIndexY = startY, minIndexX = startX
+    midX = startX + (endX - startX)/2
+    midY = startY + (endX - startX)/2
+    length = endX - startX
+
+    #Checking through the columns
+    for i in range(startX + length):
+        for j in range(startY + length):
+            if A[j][i] = localMinima: # Implementation of 4 comparisons is needed to                                   check for local minima
+                return A[j][i]
+            else if A[j][i] < min:
+                min = A[j][i]
+        i += midX
+
+    #Similarly check for the rows
+
+    #Recurse in the subproblem which contains smaller than the min element
+
+    if A[minIndexY][maxIndexX] > A[minIndexY][minIndex - 1]:
+        if minIndexY < midY:
+            return FindLocalMinima2D(arr, minIndexX - midX, startY, minIndexX, n);
+        else:
+            return FindLocalMinima2D(arr, minIndexX - midX, startY + midY,              minIndexX, n);
+
+    #Similarly check for all the other 3 directions and recurse respectively
+
+    return 0 #if any error occurs
+    
+    
+    
+int isMinima(int arr[][1000], int x, int y, int len){
+    int is_minima = 1;
+    if(x + 1 <= len){
+        if(arr[y][x + 1] < arr[y][x]){
+            is_minima = 0;
+        }    
+    }
+    if(y + 1 <= len){
+        if(arr[y + 1][x] < arr[y][x]){
+            is_minima = 0;
+        }
+    }
+    if(y - 1 >= 0){
+        if(arr[y - 1][x] < arr[y][x]){
+            is_minima = 0;
+        }
+    }
+    if(x - 1 >= 0){
+        if(arr[y][x - 1] < arr[y][x]){
+            is_minima = 0;
+        }
+    }
+    return is_minima;
+}
+
+
+// int findLocalMin2D(int arr[][1000], int x0, int y0, int x1, int ActualLen){
+
+//     if(x0 >= x1){
+//         return arr[y0][x0];
+//     }
+
+//     int min = arr[y0][x0];
+//     int minIndX = x0, minIndY = y0;
+//     int midX = x0 + (x1 - x0)/2;
+//     int midY = y0 + (x1 - x0)/2, lastY = y0 + (x1 - x0);
+//     int len = x1 - x0;
+
+//     //Checking through the columns
+
+//     for(int i = x0; i <= x0 + len; i+=(x1-x0)/2){
+//         for(int j = y0; j <= y0 + len; j++){
+//             if(checkForMinima(arr, i, j, ActualLen)){
+//                 return arr[j][i];
+//             }
+//             else if(arr[j][i] < min){
+//                 min = arr[j][i];
+//                 minIndX = i;
+//                 minIndY = j;
+//             }
+//         }
+//     }
+
+//     //Checking through the rows
+
+//     for(int j = y0; j <= y0 + len; j+=(x1-x0)/2){
+//         for(int i = x0; i <= x0 + len; i++){
+//             if(checkForMinima(arr, i, j, ActualLen)){
+//                 return arr[j][i];
+//             }
+//             else if(arr[j][i] < min){
+//                 min = arr[j][i];
+//                 minIndX = i;
+//                 minIndY = j;
+//             }
+//         }
+//     }
+
+//     if(minIndX - 1 >= 0){
+//         if(arr[minIndY][minIndX] > arr[minIndY][minIndX - 1]){
+//             if(minIndY < midY){
+//                 return findLocalMin2D(arr, minIndX - midX, y0, minIndX, ActualLen);
+//             }
+//             else
+//             {
+//                 return findLocalMin2D(arr, minIndX - midX, y0 + midY, minIndX, ActualLen);
+//             } 
+//         }
+//     }
+//     else if(minIndX + 1 < ActualLen){
+//         if(arr[minIndY][minIndX] > arr[minIndY][minIndX + 1]){
+//             if(minIndY < midY){
+//                 return findLocalMin2D(arr, minIndX, y0, minIndX + midX, ActualLen);
+//             }
+//             else
+//             {
+//                 return findLocalMin2D(arr, minIndX, y0 + midY, minIndX + midX, ActualLen);
+//             } 
+//         }
+//     }
+//     else if(minIndY - 1 >= 0){
+//         if(arr[minIndY][minIndX] > arr[minIndY - 1][minIndX]){
+//             if(minIndX < midX){
+//                 return findLocalMin2D(arr, x0, minIndY - midY, midX, ActualLen);
+//             }
+//             else
+//             {
+//                 return findLocalMin2D(arr, midX, minIndY - midY, x1, ActualLen);
+//             } 
+//         }           
+//     }   
+//     else if(minIndY + 1 < ActualLen){
+//         if(arr[minIndY][minIndX] > arr[minIndY + 1][minIndX]){
+//             if(minIndX < midX){
+//                 return findLocalMin2D(arr, x0, minIndY + midY, midX, ActualLen);
+//             }
+//             else
+//             {
+//                 return findLocalMin2D(arr, midX, minIndY + midY, x1, ActualLen);
+//             } 
+//         }
+//     }  
+
+//     return 0;
+     
+// }
+

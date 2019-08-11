@@ -1,0 +1,19 @@
+Algorithm: FINDLOCALMINIMA
+We compare middle element with its neighbors. If middle element is not greater than any of its neighbors, then we return it.
+If the middle element is greater than its left neighbor, then there is always a local minima in left half.
+If the middle element is greater than its right neighbor, then there is always a local minima in right half.
+
+FINDLOCALMINIMA(arr, start, end, n):
+GET index of middle element 
+    mid <=  (low + high) / 2
+  
+IF neighbours are there:
+    IF ((mid == 0 || arr[mid-1] > arr[mid]) and 
+            (mid == n-1 || arr[mid+1] > arr[mid])) 
+        RETURN mid
+    IF Left Half Contains the minima serach in left-Half
+    otherwise serach in right-half:
+        IF mid > 0 and arr[mid-1] < arr[mid]:
+            RETURN FINDLOCALMINIMA(arr, low, (mid -1), n)
+        ELSE
+            RETURN FINDLOCALMINIMA(arr, (mid + 1), high, n); 

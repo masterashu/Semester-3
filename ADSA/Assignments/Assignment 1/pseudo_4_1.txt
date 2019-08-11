@@ -1,0 +1,20 @@
+Algorithm I: Time Complexity O(n)
+This Program will Search the Array for the least element and will return it
+The Algorithm Uses a Single Loop in which we will match each element
+with the minimum element and update the minimum element if turns out to be smaller
+
+Input:
+n <= total no of students 
+arr <= [...]  Array of Numbers
+
+DEFINE first element as the least
+    int min = arr[0]
+
+FOR i from 1 to n:
+    IF arr[i] is less than min:
+        DEFINE min as arr[i]
+            min <= arr[i]
+
+RETURN min
+
+
