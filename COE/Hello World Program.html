@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0106)http://webcache.googleusercontent.com/search?q=cache:https://lisha.ufsc.br/teaching/os/exercise/hello.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href="https://lisha.ufsc.br/teaching/os/exercise/hello.html">--><base href="."><style>body{margin-left:0;margin-right:0;margin-top:0}#bN015htcoyT__google-cache-hdr{background:#f5f5f5;font:13px arial,sans-serif;text-align:left;color:#202020;border:0;margin:0;border-bottom:1px solid #cecece;line-height:16px;padding:16px 28px 24px 28px}#bN015htcoyT__google-cache-hdr *{display:inline;font:inherit;text-align:inherit;color:inherit;line-height:inherit;background:none;border:0;margin:0;padding:0;letter-spacing:0}#bN015htcoyT__google-cache-hdr a{text-decoration:none;color:#1a0dab}#bN015htcoyT__google-cache-hdr a:hover{text-decoration:underline}#bN015htcoyT__google-cache-hdr a:visited{color:#609}#bN015htcoyT__google-cache-hdr div{display:block;margin-top:4px}#bN015htcoyT__google-cache-hdr b{font-weight:bold;display:inline-block;direction:ltr}</style></head><body><div id="bN015htcoyT__google-cache-hdr"><div><span>This is Google's cache of <a href="https://lisha.ufsc.br/teaching/os/exercise/hello.html">https://lisha.ufsc.br/teaching/os/exercise/hello.html</a>.</span>&nbsp;<span>It is a snapshot of the page as it appeared on 16 Aug 2019 12:56:42 GMT.</span>&nbsp;<span>The <a href="https://lisha.ufsc.br/teaching/os/exercise/hello.html">current page</a> could have changed in the meantime.</span>&nbsp;<a href="http://support.google.com/websearch/bin/answer.py?hl=en&amp;p=cached&amp;answer=1687222"><span>Learn more</span>.</a></div><div><span style="display:inline-block;margin-top:8px;margin-right:104px;white-space:nowrap"><span style="margin-right:28px"><span style="font-weight:bold">Full version</span></span><span style="margin-right:28px"><a href="http://webcache.googleusercontent.com/search?q=cache:https://lisha.ufsc.br/teaching/os/exercise/hello.html&amp;strip=1&amp;vwsrc=0"><span>Text-only version</span></a></span><span style="margin-right:28px"><a href="http://webcache.googleusercontent.com/search?q=cache:https://lisha.ufsc.br/teaching/os/exercise/hello.html&amp;strip=0&amp;vwsrc=1"><span>View source</span></a></span></span></div><span style="display:inline-block;margin-top:8px;color:#717171"><span>Tip: To quickly find your search term on this page, press <b>Ctrl+F</b> or <b>⌘-F</b> (Mac) and use the find bar.</span></span></div><div style="position:relative;">
+
+  
+    
+    <link rel="stylesheet" href="./Hello World Program_files/style.css" type="text/css">
+     <title>Hello World Program</title>
+  
+  
+                       
+    <h1 align="center">The True Story of <font color="#3333ff">Hello World</font></h1>
+    <h2 align="center">(or at least a good part of it)</h2>
+              
+    <p>Most of our computer science students have been through the
+    famous "Hello World" program at least once. When compared to a
+    typical application program ---almost always featuring a web-aware
+    graphical user interface, "Hello World" turns into an very
+    uninteresting fragment of code. Nevertheless, many computer science
+    students still didn't get the real story behind it. The goal of this
+    exercise is to cast some light in the subject by snooping in the
+    "Hello World" life-cycle.</p>
+                  
+
+    <h3>The source code</h3>
+                   
+    <p>Let's begin with Hello World's source code:</p>
+ 
+    <table border="0" width="100%">
+      <tbody>
+	<tr>
+	  <td align="right" width="1%"><font color="#cc0000"><code lang="c">
+		1.<br>
+		2.<br>
+		3.<br>
+		4.<br>
+		5.<br>
+		6.<br>
+		7.
+	      </code></font></td>
+	  <td><code lang="c">
+	      #include &lt;stdio.h&gt;<br>
+	      <br>
+	      int main(void)<br>
+	      {<br>
+	      &nbsp; &nbsp; printf("Hello World!\n");<br>
+	      &nbsp; &nbsp; return 0;<br>
+	      }
+	    </code></td>
+	</tr>
+      </tbody> 
+    </table>
+          
+    <p>Line 1 instructs the compiler to include the declarations needed
+    to invoke the <i>printf</i> C library (<i>libc</i>) function.</p>
+       
+    <p>Line 3 declares function <i>main</i>, which is believed to be our
+    program entry point (it is not, as we will see later). It is
+    declared as a function that takes no parameter (we disregard command
+    line arguments in this program) and returns an integer to the parent
+    process --- the <i>shell</i>, in our case. By the way, the shell
+    dictates a convention by which a child process must return an 8-bit
+    number representing it status: <i>0</i> for normal termination, <i>0
+    &gt; n &lt; 128</i> for process detected abnormal termination, and
+    <i>n &gt; 128</i> for signal induced termination.</p>
+
+    <p>Line 4 through 8 comprise the definition of function <i>main</i>,
+    which invokes the <i>printf</i> C library function to output the
+    "Hello World!\n" string and returns 0 to the parent process.</p>
+     
+    <p>Simple, very simple!</p>
+     
+
+    <h3>Compilation</h3>
+
+    <p>Now let's take a look at the compilation process for "Hello
+    World". For the upcoming discussion, we'll take the widely-used GNU
+    compiler (<i>gcc</i>) and its associated tools (<i>binutils</i>). We
+    can compile the program as follows:</p>
+
+    <samp># gcc -Os -c hello.c</samp>
+
+    <p>This produces the object file <i>hello.o</i>. More
+    specifically,</p>
+   
+    <samp>
+      # file hello.o<br>
+      hello.o: ELF 32-bit LSB relocatable, Intel 80386, version 1 (SYSV), not
+ stripped
+    </samp>
+
+    <p>tells us hello.o is a relocatable object file, compiled for the
+    IA-32 architecture (I used a standard PC for this study), stored in
+    the <a href="http://www.cs.ucdavis.edu/~haungs/paper/node10.html">Executable
+    and Linking Format (ELF)</a>, that contains a symbol table (not
+    stripped).</p>
+
+    <p>By the way,</p>
+
+    <samp># objdump -hrt hello.o<br>
+      hello.o:&nbsp;&nbsp;&nbsp;&nbsp; file format elf32-i386<br>
+      <br>
+      Sections:<br>
+      Idx Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VMA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LMA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File off&nbsp; Algn<br>
+      &nbsp; 0 .text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000011&nbsp;00000000&nbsp; 00000000&nbsp; 00000034&nbsp; 2**2<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE<br>
+      &nbsp; 1 .data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000000&nbsp;00000000&nbsp; 00000000&nbsp; 00000048&nbsp; 2**2<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTENTS, ALLOC, LOAD, DATA<br>
+&nbsp; 2 .bss&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000000&nbsp;00000000&nbsp; 00000000&nbsp; 00000048&nbsp; 2**2<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALLOC<br>
+      &nbsp; 3 .rodata.str1.1 0000000d&nbsp; 00000000&nbsp; 00000000&nbsp; 00000048&nbsp;2**0<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTENTS, ALLOC, LOAD, READONLY, DATA<br>
+      &nbsp; 4 .comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 00000033&nbsp; 00000000&nbsp;00000000&nbsp; 00000055&nbsp; 2**0<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTENTS, READONLY<br>
+      <br>
+      SYMBOL TABLE:<br>
+      00000000 l&nbsp;&nbsp;&nbsp; df *ABS*&nbsp; 00000000 hello.c<br>
+      00000000 l&nbsp;&nbsp;&nbsp; d&nbsp; .text&nbsp; 00000000<br>
+      00000000 l&nbsp;&nbsp;&nbsp; d&nbsp; .data&nbsp; 00000000<br>
+      00000000 l&nbsp;&nbsp;&nbsp; d&nbsp; .bss&nbsp;&nbsp; 00000000<br>
+      00000000 l&nbsp;&nbsp;&nbsp; d&nbsp; .rodata.str1.1 00000000<br>
+      00000000 l&nbsp;&nbsp;&nbsp; d&nbsp; .comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      00000000<br>
+      00000000 g&nbsp;&nbsp;&nbsp; F&nbsp; .text&nbsp; 00000011 main<br>
+      00000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *UND*&nbsp; 00000000 puts<br>
+      <br>
+      RELOCATION RECORDS FOR [.text]:<br>
+      OFFSET&nbsp;&nbsp; TYPE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VALUE<br>
+      00000004 R_386_32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .rodata.str1.1<br>
+      00000009 R_386_PC32&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts
+    </samp>
+
+    <p>tells us <i>hello.o</i> has 5 sections:</p>
+
+    <ol>
+      <li><b>.text</b>: that's "Hello World" compiled program,
+      i.e. IA-32 opcodes corresponding to the program. This will be used
+      by the program <i>loader</i> to initialize the <i>process' code
+      segment</i>.</li>
+
+      <li><b>.data</b>: "Hello World" has neither initialized global
+      variables nor initialized static local variables, so this section
+      is empty. Otherwise, it would contain the variable initial values
+      to be loaded into the <i>data segment</i>.</li>
+
+      <li><b>.bss</b>: "Hello World" also doesn't have any
+      non-initialized variable, either global or local, so this section
+      is also empty. Otherwise, it would indicate how many bytes must be
+      allocated and zeroed in the <i>data segment</i> in addition to
+      section <i>.data</i>.</li>
+
+      <li><b>.rodata</b>: this segment contains the "Hello World!\n"
+      string, which is tagged read-only. Most operating systems do not
+      support a <i>read-only data segment</i> for processes (running
+      programs), so the contents of <i>.rodata</i> go either to the
+      process' <i>code segment</i> (because it's read-only), or to the
+      <i>data segment</i> (because it's data). Since the compiler
+      doesn't know the policy adopted by your OS, it creates this extra
+      ELF section.</li>
+
+      <li><b>.comment</b>: this segment contains 33 bytes of comments
+      which cannot be tracked back to our program, since we didn't write
+      any comment.  We'll soon see where it comes from.</li>
+    </ol>
+
+    <p>It also shows us a <i>symbol table</i> with symbol <i>main</i>
+    bound to address 00000000 and symbol <i>puts</i>
+    undefined. Moreover, the <i>relocation table</i> tells us how to
+    relocate the references to external sections made in section
+    <i>.text</i>. The first relocatable symbol corresponds to the "Hello
+    World!\n" string contained in section <i>.rodata</i>. The second
+    relocatable symbol, <i>puts</i>, designates a <i>libc</i> function
+    which was generated as a result of invoking <i>printf</i>. To better
+    understand the contents of <i>hello.o</i>, let's take a look at the
+    assembly code:</p>
+   
+    <table border="0" width="100%">
+      <tbody>
+	<tr>
+	  <td align="right" width="1%"><font color="#cc0000"><code lang="c">
+		1.<br>
+		2.<br>
+		3.<br>
+		4.<br>
+		5.<br>
+		6.<br>
+		7.<br>
+		8.<br>
+		9.<br>
+		10.<br>
+		11.<br>
+		12.<br>
+		13.<br>
+		14.<br>
+		15.<br>
+		16.<br>
+		17.<br>
+		18.<br>
+		19.<br>
+		20.<br>
+	      </code></font></td>
+	  <td><samp># gcc -Os -S hello.c -o -</samp>
+	    <code lang="asm"><br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .file&nbsp;&nbsp; "hello.c"<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .section&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.rodata.str1.1,"aMS",@progbits,1<br>
+	      .LC0:<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .string "Hello World!"<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .text<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .align 2<br>
+	      .globl main<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .type&nbsp;&nbsp; main,@function<br>
+	      main:<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pushl&nbsp;&nbsp; %ebp<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; movl&nbsp;&nbsp;&nbsp; %esp, %ebp<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pushl&nbsp;&nbsp; $.LC0<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; call&nbsp;&nbsp;&nbsp; puts<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xorl&nbsp;&nbsp;&nbsp; %eax, %eax<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; leave<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ret<br>
+	      .Lfe1:<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .size&nbsp;&nbsp; n,.Lfe1-n<br>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .ident&nbsp; "GCC: (GNU) 3.2 20020903 (Red Hat Linux 8.0 3.2-7)"
+	    </code></td>
+	</tr>
+      </tbody>
+    </table>
+
+    <p>From the assembly code, it becomes clear where the ELF section
+    flags come from. For instance, section <i>.text</i> is to be 32-bit
+    aligned (line 7).  It also reveals where the <i>.comment</i> section
+    comes from (line 20). Since <i>printf</i> was called to print a
+    single string, and we requested our nice compiler to optimize the
+    generated code (<i>-Os</i>), <i>puts</i> was generated
+    instead. Unfortunately, we'll see later that our <i>libc</i>
+    implementation will render the compiler effort useless.</p>
+
+    <p>And what about the assembly code produced? No surprises here: a
+    simple call to function <i>puts</i> with the string addressed by
+    <i>.LC0</i> as argument.</p>
+ 
+    
+    <h3>Linking</h3>
+
+    <p>Now let's take a look at the process of transforming
+    <i>hello.o</i> into an executable. One might think the following
+    command would do:</p>
+
+    <samp># ld -o hello hello.o -lc<br>
+      ld: warning: cannot find entry symbol _start; defaulting to 08048184<br>
+    </samp>
+
+    <p>But what's that warning? Try running it!</p>
+
+    <p>Yes, it doesn't work. So let's go back to that warning: it tells
+    the linker couldn't find our program's entry point
+    <i>_start</i>. But wasn't it <i>main</i> our entry point? To be
+    short here, <i>main</i> is the start point of a C program from the
+    programmer's perspective. In fact, before calling main, a process
+    has already executed a bulk of code to "clean up the room for
+    execution".  We usually get this surrounding code transparently from
+    the compiler/OS provider.</p>
+
+    <p>So let's try this:</p>
+
+    <samp>
+      # ld -static -o hello -L`gcc -print-file-name=` /usr/lib/crt1.o /usr/lib/crti.o hello.o /usr/lib/crtn.o -lc -lgcc
+    </samp>
+
+    <p>(if this command doesn't work, see Troubleshooting [1] and [2].)</p>
+
+    <p>Now we should have a real executable. Static linking was used for
+    two reasons: first, I don't want to go into the discussion of how
+    dynamic libraries work here; second, I'd like to show you how much
+    unnecessary code comes into "Hello World" due to the way libraries
+    (<i>libc</i> and <i>libgcc</i>) are implemented.  Try the following:
+    </p>
+
+    <samp>
+      # find hello.c hello.o hello -printf "%f\t%s\n"<br>
+      hello.c 84<br>
+      hello.o 788<br>
+      hello&nbsp;&nbsp; 445506<br>
+    </samp>
+
+    <p>You can also try "<samp>nm hello</samp>" or "<samp>objdump -d
+    hello</samp>" to get an idea of what got linked into the
+    executable.</p>
+
+    <p>For information about dynamic linking, please refer to <a href="http://www.tldp.org/HOWTO/Program-Library-HOWTO/">Program
+    Library HOWTO</a>.</p>
+
+
+    <h3>Loading and running</h3>
+
+    <p>In a POSIX OS, loading a program for execution is accomplished by
+    having the <i>father</i> process to invoke the <i>fork</i> system
+    call to replicates itself and having the just-created <i>child</i>
+    process to invoke the <i>execve</i> system call to load and start
+    the desired program. This procedure is carried out, for instance, by
+    the <i>shell</i> whenever you type an external command.  You can
+    confirm this with <i>truss</i> or <i>strace</i>:</p>
+
+    <samp>
+      # strace -i hello &gt; /dev/null<br>
+      [????????] execve("./hello", ["hello"], [/* 46 vars */]) = 0<br>
+      ...<br>
+      [08053d44] write(1, "Hello World!\n", 13) = 13<br>
+      ...<br>
+      [0804e7ad] _exit(0) = ?<br>
+    </samp>
+
+    <p>Besides the <i>execve</i> system call, the output shows the call
+    to <i>write</i> that results from <i>puts</i>, and the call to
+    <i>exit</i> with the argument returned by function <i>main</i>
+    (<i>0</i>). </p>
+
+    <p>To understand the details behind the loading procedure carried
+    out by <i>execve</i>, let's take a look at our ELF executable:</p>
+
+    <samp>
+      # readelf -l hello<br>
+      Elf file type is EXEC (Executable file)<br>
+      Entry point 0x80480e0<br>
+      There are 3 program headers, starting at offset 52<br>
+      <br>
+      Program Headers:<br>
+      &nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Offset&nbsp;&nbsp; VirtAddr&nbsp;&nbsp; PhysAddr&nbsp;&nbsp; FileSiz MemSiz&nbsp;&nbsp;Flg Align<br>
+      &nbsp; LOAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x000000 0x08048000 0x08048000 0x55dac 0x55dac R E 0x1000<br>
+      &nbsp; LOAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x055dc0 0x0809edc0 0x0809edc0 0x01df4 0x03240 RW&nbsp; 0x1000<br>
+      &nbsp; NOTE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0x000094 0x08048094 0x08048094 0x00020 0x00020 R&nbsp;&nbsp; 0x4<br>
+      <br>
+      Section to Segment mapping:<br>
+      &nbsp; Segment Sections...<br>
+      &nbsp;&nbsp; 00&nbsp;&nbsp;&nbsp;&nbsp; .init .text .fini .rodata __libc_atexit __libc_subfreeres .note.ABI-tag<br>
+      &nbsp;&nbsp; 01&nbsp;&nbsp;&nbsp;&nbsp; .data .eh_frame .got .bss<br>
+      &nbsp;&nbsp; 02&nbsp;&nbsp;&nbsp;&nbsp; .note.ABI-tag
+    </samp>
+    
+    <p> The output shows the overall structure of <i>hello</i>. The first
+    <i>program header</i> corresponds to the process' <i>code
+    segment</i>, which will be loaded from file at offset 0x000000 into
+    a memory region that will be mapped into the process' <i>address
+    space</i> at address 0x08048000. The code segment will be 0x55dac
+    bytes large and must be page-aligned (0x1000). This segment will
+    comprise the <i>.text</i> and <i>.rodata</i> ELF segments discussed
+    earlier, plus additional segments generated during the linking
+    procedure.  As expected, it's flagged read-only (R) and executable
+    (X), but not writable (W).</p>
+
+    <p>The second <i>program header</i> corresponds to the process'
+    <i>data segment</i>.  Loading this segment follows the same steps
+    mentioned above. However, note that the segment size is 0x01df4 on
+    file and 0x03240 in memory. This is due to the <i>.bss</i> section,
+    which is to be zeroed and therefore doesn't need to be present in
+    the file. The data segment will also be page-aligned (0x1000) and
+    will contain the <i>.data</i> and <i>.bss</i> ELF segments. It will
+    be flagged readable and writable (RW). The third program header
+    results from the linking procedure and is irrelevant for this
+    discussion.</p>
+
+    <p>If you have a <i>proc file system</i>, you can check this, as
+    long as you get "Hello World" to run long enough (hint: <i>gdb</i>),
+    with the following command:</p>
+
+    <samp>
+      # cat /proc/`ps -C hello -o pid=`/maps<br>
+      08048000-0809e000 r-xp 00000000 03:06 479202&nbsp;&nbsp;&nbsp;&nbsp; .../hello<br>
+      0809e000-080a1000 rw-p 00055000 03:06 479202&nbsp;&nbsp;&nbsp;&nbsp; .../hello<br>
+      080a1000-080a3000 rwxp 00000000 00:00 0<br>
+      bffff000-c0000000 rwxp 00000000 00:00 0
+    </samp>
+
+    <p>The first mapped region is the process' <i>code segment</i>, the
+    second and third build up the <i>data segment </i>(<i>data + bss +
+    heap</i>), and the fourth, which has no correspondent in the ELF
+    file, is the <i>stack</i>.  Additional information about the running
+    <i>hello</i> process can be obtained with GNU <i>time</i>,
+    <i>ps</i>, and <i>/proc/pid/stat</i>.</p>
+
+
+    <h3>Terminating</h3>
+
+    <p>When "Hello World" executes the <i>return</i> statement in
+    <i>main</i> function, it passes a parameter to the surrounding
+    functions discussed in section linking.  One of these functions
+    invokes the <i>exit</i> system call passing by the <i>return</i>
+    argument. The <i>exit</i> system call hands over that value to the
+    <i>parent</i> process, which is currently blocked on the <i>wait</i>
+    system call. Moreover, it conducts a clean process termination, with
+    resources being returned to the system. This procedure can be
+    partially traced with the following:</p>
+
+    <samp>
+      # strace -e trace=process -f sh -c "hello; echo $?" &gt; /dev/null<br>
+      execve("/bin/sh", ["sh", "-c", "hello; echo 0"], [/* 46 vars */]) = 0<br>
+      fork()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+= 8321<br>
+      [pid&nbsp; 8320] wait4(-1,&nbsp; &lt;unfinished ...&gt;<br>
+      [pid&nbsp; 8321] execve("./hello", ["hello"], [/* 46 vars */]) = 0<br>
+      [pid&nbsp; 8321] _exit(0)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= ?<br>
+      &lt;... wait4 resumed&gt; [WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 0], 0, NULL) = 8321<br>
+      --- SIGCHLD (Child exited) ---<br>
+      wait4(-1, 0xbffff06c, WNOHANG, NULL)&nbsp;&nbsp;&nbsp; = -1 ECHILD (No child processes)<br>
+      _exit(0)
+    </samp>
+
+
+    <h3>Closing</h3>
+
+    <p>The intention of this exercise is to call attention of new
+    computer science students to the fact that a Java applet doesn't get
+    run by magic: there's a lot of system software behind even the
+    simplest program. If consider it useful and have any suggestion to
+    improve it, please <a href="mailto:guto@lisha.ufsc.br">e-mail
+    me</a>.</p>
+
+    <h3>Troubleshooting</h3>
+
+    <h4>[1] cannot find /usr/lib/crt1.o</h4>
+
+    <p>When running the command:</p>
+    <samp>$ ld -static -o hello -L`gcc -print-file-name=` /usr/lib/crt1.o /usr/lib/crti.o hello.o /usr/lib/crtn.o -lc -lgcc</samp>
+
+    <p>You may get the following errors:</p>
+    <samp>ld: cannot find /usr/lib/crt1.o: No such file or directory<br>
+    ld: cannot find /usr/lib/crti.o: No such file or directory<br>
+    ld: cannot find /usr/lib/crtn.o: No such file or directory</samp>
+
+    <p>The files mentioned may be in another directory in your system. You can find them by running:</p>
+    <samp>$ find /usr/lib -name 'crt1.o'</samp>
+
+    <p>which returns, for example:</p>
+    <samp>/usr/lib/x86_64-linux-gnu/crt1.o</samp>
+
+    <p>If you don't find the files with the command above, you may need to install the libc6-dev package and then re-run the "find" command. On a 64-bit Ubuntu 14.04 machine:</p>
+    <samp>$ sudo apt-get install libc6-dev</samp>
+
+    <p>Then you need to adapt the ld command to the correct directory, for example:</p>
+    <samp>$ ld -static -o hello -L`gcc -print-file-name=` /usr/lib/x86_64-linux-gnu/crt1.o hello.o /usr/lib/x86_64-linux-gnu/crti.o /usr/lib/x86_64-linux-gnu/crtn.o -lc -lgcc</samp>
+
+    <h4>[2] undefined reference to `_Unwind_Resume'</h4>
+    <p>In newer versions of GCC, you may run into undefined references such as:</p>
+    <samp>
+        //usr/lib/x86_64-linux-gnu/libc.a(iofclose.o): In function `_IO_new_fclose':<br>
+        (.text+0x20c): undefined reference to `_Unwind_Resume'<br>
+        //usr/lib/x86_64-linux-gnu/libc.a(iofclose.o):(.eh_frame+0x1f3): undefined reference to `__gcc_personality_v0'<br>
+        //usr/lib/x86_64-linux-gnu/libc.a(iofflush.o): In function `_IO_fflush':<br>
+        (...)
+    </samp>
+
+    <p>You need to include gcc's exception support library (-lgcc_eh), but that will cause circular dependencies. Use the following command:</p>
+    <samp>$ ld -static -o hello -L`gcc -print-file-name=` /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o hello.o /usr/lib/x86_64-linux-gnu/crtn.o --start-group -lc -lgcc -lgcc_eh --end-group</samp>
+
+    <p>The --start-group --end-group flags are used to solve the mentioned circular dependencies. You can read about them with</p>
+    <samp>$ man ld</samp>
+
+
+    <h3>FAQ</h3>
+
+    <p>This section is dedicated to student's frequently asked questions.</p>
+
+    <ul>
+      <li><b>What is "libgcc"? Why is included in linkage?</b></li>
+
+      <p align="justify">Internal compiler libs, such as libgcc, are
+      used to implement language constructs not directly implemented by
+      the target architecture. For instance, the module operator in C
+      ("%") might not be mappable to a single assembly instruction on
+      the target architecture. Instead of having the compiler to
+      generate in-line code, a function call might be preferable
+      (specially for memory limited machines such as
+      microcontrollers). Many other primitives, including division,
+      multiplication, string manipulation (e.g. memory copy) are
+      typically implemented on such libraries.</p>
+
+      <li><b>Is there a diagram summarizing this all?</b></li>
+
+      <p align="justify">Yes. Check <a href="https://code.google.com/p/corkami/wiki/ELF101">this</a>.
+    </p></ul>
+
+  
+
+</div></body></html>
