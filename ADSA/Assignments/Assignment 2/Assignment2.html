@@ -1,0 +1,574 @@
+﻿<ol>
+  <li>
+    <p>Mark the following as <code>True</code> or <code>False</code>. Briefly but convincingly justify all of your
+      answers using the definition of <img src="https://tex.s2cms.ru/svg/O(.)" alt="O(.)" />, <img
+        src="https://tex.s2cms.ru/svg/%5CTheta(.)" alt="\Theta(.)" /> and <img
+        src="https://tex.s2cms.ru/svg/%5COmega(.)" alt="\Omega(.)" /></p>
+    <ol>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/n%20%3D%20O(n%5C%20log(n))" alt="n = O(n\ log(n))" /> :
+          <strong>True</strong><br>
+          Solution:</p>
+        <p>Given: <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20n" alt="T(n) = n" /></p>
+        <p>We know that</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%201%20%5Cleqslant%20log(n)%20%2C%5C%20%5C%20%5Ctext%7Bfor%20all%20n%20%24%5Cgeqslant%24%202%7D%20%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  1 \leqslant log(n) ,\ \ \text{for all n $\geqslant$ 2}  
+\end{equation*}" /></p>
+        <p>On multiplying both sides with n we will get:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20n%20%5Cleqslant%20nlog(n)%20%2C%5C%20%5C%20%5Ctext%7Bfor%20all%20n%20%24%5Cgeqslant%24%202%7D%20%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  n \leqslant nlog(n) ,\ \ \text{for all n $\geqslant$ 2}  
+\end{equation*}" /></p>
+        <p>Since the above line is the summary / definition of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)"
+            alt="O(\cdot)" /> giving us</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%20O(nlog(n))%20%2C%5C%20%5C%20%5C%20%5Ctext%7Bwith%20%24n_o%24%20%3D%202%20%2C%20c%20%3D%201%7D%20%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = O(nlog(n)) ,\ \ \ \text{with $n_o$ = 2 , c = 1}  
+\end{equation*}" /></p>
+        <p>Which proves the given statement is <code>True</code>.</p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/n%5E%7B1%2Flog(n)%7D%20%3D%20%5CTheta(1)"
+            alt="n^{1/log(n)} = \Theta(1)" /> : <strong>True</strong><br>
+          Solution:</p>
+        <p>Given:</p>
+        <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%20n%5E%7B1%2Flog_2(n)%7D%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = n^{1/log_2(n)}
+\end{equation*}" /></p>
+        <p>Since <img src="https://tex.s2cms.ru/svg/log_2(2)%20%3D%201" alt="log_2(2) = 1" />, we will replace it in
+          eqn. (1)</p>
+        <p align="center" style="text-align: center;"><span style="float:right">(2)</span><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%20n%5E%7Blog_2(2)%2Flog_2(n)%7D%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = n^{log_2(2)/log_2(n)}
+\end{equation*}" /></p>
+        <p>Applying property of logarithm: <img src="https://tex.s2cms.ru/svg/%5Cfrac1%7Blog_b(a)%7D%20%3D%20log_a(b)"
+            alt="\frac1{log_b(a)} = log_a(b)" /></p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%20n%5E%7Blog_n(2)%7D%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = n^{log_n(2)}
+\end{equation*}" /></p>
+        <p>Since <img src="https://tex.s2cms.ru/svg/log_n(n)%20%3D%201" alt="log_n(n) = 1" /> we get</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%202%5E%7B1%7D%20%3D%20constant%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = 2^{1} = constant
+\end{equation*}" /></p>
+        <p>Taking <img src="https://tex.s2cms.ru/svg/c_1%20%3D%201" alt="c_1 = 1" /> and <img
+            src="https://tex.s2cms.ru/svg/c_2%20%3D%203" alt="c_2 = 3" />:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20c_1%20%5Ccdot%201%20%5Cleqslant%20T(n)%20%3D%202%20%5Cleqslant%20c_2%5Ccdot%201%2C%5C%20%5C%20%5Ctext%7Bfor%20all%20n%20%24%5Cgeqslant%24%200%7D%20%20%5C%5C%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  c_1 \cdot 1 \leqslant T(n) = 2 \leqslant c_2\cdot 1,\ \ \text{for all n $\geqslant$ 0}  \\
+\end{equation*}" /></p>
+        <p>Since the above line is the summary / definition of <img src="https://tex.s2cms.ru/svg/%5CTheta(%5Ccdot)"
+            alt="\Theta(\cdot)" /> giving us</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%20%5CTheta(1)%20%5C%20%5C%20%5C%20%5Ctext%7Bwith%20%24n_o%24%20%3D%200%20%2C%20%24c_1%24%20%3D%201%2C%20%24c_2%24%20%3D%203%7D%20%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = \Theta(1) \ \ \ \text{with $n_o$ = 0 , $c_1$ = 1, $c_2$ = 3}  
+\end{equation*}" /></p>
+        <p>Which proves the given statement is <code>True</code>.</p>
+      </li>
+      <li>
+        <p>If <img
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A%5Ctext%7B%24f(n)%20%3D%20%24%7D%0A%5Cbegin%7Bcases%7D%0A5%5En%20%26%20%5Ctext%7Bif%20%24n%20%3C%202%5E%7B1000%7D%24%7D%20%5C%5C%20%0A2%5E%7B1000%7Dn%5E2%20%26%20%5Ctext%7Bif%20%24n%20%5Cgeqslant%202%5E%7B1000%7D%24%7D%20%7D%20%5C%5C%20%5C%5C%20%0A%5Cend%7Bcases%7D%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+\text{$f(n) = $}
+\begin{cases}
+5^n &amp; \text{if $n &lt; 2^{1000}$} \\ 
+2^{1000}n^2 &amp; \text{if $n \geqslant 2^{1000}$} } \\ \\ 
+\end{cases}
+\end{equation*}" /> and <img src="https://tex.s2cms.ru/svg/g(n)%20%3D%20%5Cfrac%7Bn%5E2%7D%7B2%5E%7B1000%7D%7D%20"
+            alt="g(n) = \frac{n^2}{2^{1000}} " />,<br>
+          then <img src="https://tex.s2cms.ru/svg/f(n)%20%3D%20O(g(n))" alt="f(n) = O(g(n))" />. <strong>True</strong>
+        </p>
+        <p>We know that:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0An%5E2%20%3C%202n%5E2%20%5Ctext%7B%2C%20for%20%7D%20n%20%3E%202%20%20%5C%5C%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+n^2 &lt; 2n^2 \text{, for } n &gt; 2  \\ 
+\end{equation*}" /></p>
+        <p>Multiplying by <img src="https://tex.s2cms.ru/svg/2%5E%7B2000%7D" alt="2^{2000}" /> on both sides:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A2%5E%7B2000%7Dn%5E2%20%3C%202%5E%7B2001%7Dn%5E2%20%5Ctext%7B%2C%20for%20%7D%20n%20%3E%202%20%20%5C%5C%20%5C%5C%20%0A2%5E%7B1000%7Dn%5E2%20%3C%202%5E%7B2001%7D%5Ccdot%20(%5Cfrac%7Bn%5E2%7D%7B2%5E%7B1000%7D%7D)%20%5Ctext%7B%2C%20for%20%7D%20n%20%3E%202%20%20%5C%5C%20%5C%5C%20%0AT(n)%20%3C%202%5E%7B2001%7D%5Ccdot%20(g(n))%20%5Ctext%7B%2C%20for%20%7D%20n%20%3E%202%5E%7B1000%7D%20%20%5C%5C%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+2^{2000}n^2 &lt; 2^{2001}n^2 \text{, for } n &gt; 2  \\ \\ 
+2^{1000}n^2 &lt; 2^{2001}\cdot (\frac{n^2}{2^{1000}}) \text{, for } n &gt; 2  \\ \\ 
+T(n) &lt; 2^{2001}\cdot (g(n)) \text{, for } n &gt; 2^{1000}  \\ 
+\end{equation*}" /></p>
+        <p>According to the definition of the <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /> we can
+          say that <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(g(n))" alt="T(n) = O(g(n))" />, for <img
+            src="https://tex.s2cms.ru/svg/c%20%3D%202%5E%7B2001%7D%2C%20n_0%20%3D%202%5E%7B1000%7D"
+            alt="c = 2^{2001}, n_0 = 2^{1000}" />. Hence The Given statement is <code>True</code>.</p>
+      </li>
+      <li>
+        <p>For all the possible functions <img src="https://tex.s2cms.ru/svg/f(n)" alt="f(n)" />, <img
+            src="https://tex.s2cms.ru/svg/g(n)%20%5Cgeqslant%200" alt="g(n) \geqslant 0" />, if <img
+            src="https://tex.s2cms.ru/svg/f(n)%20%3D%20O(g(n))" alt="f(n) = O(g(n))" />,
+          then <img src="https://tex.s2cms.ru/svg/2%5E%7Bf(n)%7D%20%3D%20O(2%5E%7Bg(n)%7D)"
+            alt="2^{f(n)} = O(2^{g(n)})" />: <strong>False</strong><br>
+          Let us consider the following statement to be true:</p>
+        <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A%5Cforall%20f(n)%2C%20g(n)%20%5Cgeqslant%200%2C%20(f(n)%20%3D%20O(g(n)))%20%5Cimplies%20(2%5E%7Bf(n)%7D%20%3D%20%0AO(2%5E%7Bg(n)%7D))%20%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+\forall f(n), g(n) \geqslant 0, (f(n) = O(g(n))) \implies (2^{f(n)} = 
+O(2^{g(n)}))  
+\end{equation*}" /></p>
+        <p>We Will disprove this statement by giving a contradictory example<br>
+          Let’s consider <img src="https://tex.s2cms.ru/svg/f(n)%20%3D%202n" alt="f(n) = 2n" /> and we know that <img
+            src="https://tex.s2cms.ru/svg/f(n)%20%3D%20O(n)" alt="f(n) = O(n)" /> for <img
+            src="https://tex.s2cms.ru/svg/%20c%20%3D%203%20%2C%20n%20%5Cgeqslant%200" alt=" c = 3 , n \geqslant 0" />
+          which gives us <img src="https://tex.s2cms.ru/svg/g(n)%20%3D%20n" alt="g(n) = n" /><br>
+          Now putting the values of <img src="https://tex.s2cms.ru/svg/g(n)%20%5Ctext%7B%20and%20%7D%20f(n)"
+            alt="g(n) \text{ and } f(n)" /> in <em>eqn.</em> 1:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A2%5E%7Bf(n)%7D%20%3D%20O(2%5E%7Bg(n)%7D)%20%5C%5C%20%5C%5C%0A2%5E%7B2n%7D%20%3D%20O(2%5En)%20%5C%5C%20%5C%5C%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+2^{f(n)} = O(2^{g(n)}) \\ \\
+2^{2n} = O(2^n) \\ \\
+\end{equation*}" /></p>
+        <p>By the definition of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /> we can say that:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Balign*%7D%0A%262%5E%7B2n%7D%20%5Cleqslant%20c%5Ccdot%202%5En%20%26%5Ctext%7B%20for%20some%20%24n_0%2C%20c%24%20and%20%24n%20%5Cgeqslant%20n_0%24%20%7D%20%5C%5C%20%5C%5C%20%0A%262%5En%20%5Cleqslant%20c%20%26%5Ctext%7B%20for%20some%20%24n_0%2C%20c%24%20and%20%24n%20%5Cgeqslant%20n_0%24%20%7D%20%5C%5C%20%5C%5C%0A%5Cend%7Balign*%7D"
+            alt="\begin{align*}
+&amp;2^{2n} \leqslant c\cdot 2^n &amp;\text{ for some $n_0, c$ and $n \geqslant n_0$ } \\ \\ 
+&amp;2^n \leqslant c &amp;\text{ for some $n_0, c$ and $n \geqslant n_0$ } \\ \\
+\end{align*}" /></p>
+        <p>But we know that <img src="https://tex.s2cms.ru/svg/2%5En" alt="2^n" /> is an unbounded function and hence
+          there cannot exist a constant <em>c</em> which will be always greater than or equal to the function, which
+          contradicts the argument we made which means our assumption was wrong and <img
+            src="https://tex.s2cms.ru/svg/2%5E%7Bf(n)%7D%20%5Ctext%7B%20is%20not%20%7D%20O(2%5E%7Bg(n)%7D)"
+            alt="2^{f(n)} \text{ is not } O(2^{g(n)})" /><br>
+          Hence the given statement is <code>False</code></p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/5%5E%7Blog%5C%20log(n)%7D%7D%20%3D%20%20O(log(n)%5E2)"
+            alt="5^{log\ log(n)}} =  O(log(n)^2)" /> : <strong>False</strong><br>
+          Solution:</p>
+        <p>Let us consider the given argument to be correct:</p>
+        <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%205%5E%7Blog%5C%20log(n)%7D%7D%20%3D%20%20O(log(n)%5E2)%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = 5^{log\ log(n)}} =  O(log(n)^2)
+\end{equation*}" /></p>
+        <p>Applying property of logarithm: <img
+            src="https://tex.s2cms.ru/svg/n%5E%7Blog_b(a)%7D%20%3D%20a%5E%7Blog_b(n)%7D"
+            alt="n^{log_b(a)} = a^{log_b(n)}" /></p>
+        <p align="center" style="text-align: center;"><span style="float:right">(2)</span><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20%20T(n)%20%3D%20log(n)%5E%7Blog_25%7D%20%5Capprox%20log(n)%5E%7B2.3%7D%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+  T(n) = log(n)^{log_25} \approx log(n)^{2.3}
+\end{equation*}" /></p>
+        <p>The given argument states that <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(log(n)%5E2)"
+            alt="T(n) = O(log(n)^2)" />. So according to definition
+          of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /> and <em>eqn.</em> 2 we can say that</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0Alog(n)%5E%7B2.3%7D%20%5Cleqslant%20c%5Ccdot%20log(n)%5E2%20%20%5Ctext%7B%20for%20some%20%24n%5Cgeqslant%20n_0%24%7D%20%5C%5C%0Alog(n)%5E%7B0.3%7D%20%5Cleqslant%20c%20%5Ctext%7B%20for%20some%20%24n%5Cgeqslant%20n_0%24%7D%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+log(n)^{2.3} \leqslant c\cdot log(n)^2  \text{ for some $n\geqslant n_0$} \\
+log(n)^{0.3} \leqslant c \text{ for some $n\geqslant n_0$}
+\end{equation*}" /></p>
+        <p>But we know that <img src="https://tex.s2cms.ru/svg/log(n)" alt="log(n)" /> is an unbounded function and
+          hence there cannot exist a constant <em>c</em> which will be always greater than the function, which
+          contradicts the argument we made which means our assumption was wrong and <img
+            src="https://tex.s2cms.ru/svg/T(n)" alt="T(n)" /> is not <img src="https://tex.s2cms.ru/svg/O(log(n)%5E2)"
+            alt="O(log(n)^2)" /><br>
+          Hence the given statement is <code>False</code></p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/n%20%3D%20%5CTheta(100%5E%7Blog(n)%7D)" alt="n = \Theta(100^{log(n)})" />
+          : <strong>False</strong><br>
+          Using property of logarithm we can rewrite it as:</p>
+        <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0An%20%3D%20%5CTheta(n%5E%7Blog(100)%7D)%20%5Capprox%20%5CTheta(n%5E%7B6.6%7D)%20%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}  
+n = \Theta(n^{log(100)}) \approx \Theta(n^{6.6}) 
+\end{equation*}" /></p>
+        <p>Since <img src="https://tex.s2cms.ru/svg/%5CTheta(%5Ccdot)" alt="\Theta(\cdot)" /> means both <img
+            src="https://tex.s2cms.ru/svg/%5COmega(%5Ccdot)" alt="\Omega(\cdot)" /> and <img
+            src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /> we first check <img
+            src="https://tex.s2cms.ru/svg/%5COmega(%5Ccdot)" alt="\Omega(\cdot)" />:<br>
+          We will use a proof by contradiction to disprove this.
+          Suppose as per the definition of <img src="https://tex.s2cms.ru/svg/%5COmega(%5Ccdot)" alt="\Omega(\cdot)" />,
+          there is some <img src="https://tex.s2cms.ru/svg/n_0" alt="n_0" /> and some <img
+            src="https://tex.s2cms.ru/svg/c%20%3E%200" alt="c &gt; 0" /> such that for all <img
+            src="https://tex.s2cms.ru/svg/n%20%5Cgeqslant%20n_0" alt="n \geqslant n_0" />,</p>
+        <p><img src="https://tex.s2cms.ru/svg/n%20%5Cgeqslant%20c%5Ccdot%20n%5E%7B6.6%7D%20"
+            alt="n \geqslant c\cdot n^{6.6} " />.</p>
+        <p>Let us choose <img src="https://tex.s2cms.ru/svg/n%20%3D%20max%5C%7B1%2Fc%2C%20n_0%5C%7D%20%2B%201"
+            alt="n = max\{1/c, n_0\} + 1" />.<br>
+          Then <img src="https://tex.s2cms.ru/svg/n%3En_0" alt="n&gt;n_0" /> but we will have <img
+            src="https://tex.s2cms.ru/svg/n%3E1%2Fc" alt="n&gt;1/c" /> which implies that <img
+            src="https://tex.s2cms.ru/svg/c%5Ccdot%20n%5E2%20%3E%20n" alt="c\cdot n^2 &gt; n" /> and since <img
+            src="https://tex.s2cms.ru/svg/c%5Ccdot%20n%5E%7B6.6%7D%20%3E%20c%5Ccdot%20n%5E2%2C%20%5Ctext%7B%20for%20%7D%20n%20%3E%201"
+            alt="c\cdot n^{6.6} &gt; c\cdot n^2, \text{ for } n &gt; 1" />, it also implies that <img
+            src="https://tex.s2cms.ru/svg/c%5Ccdot%20n%5E%7B6.6%7D%20%3E%20n" alt="c\cdot n^{6.6} &gt; n" />. Which is a
+          Contradiction to our assumption above about <img src="https://tex.s2cms.ru/svg/%5COmega(%5Ccdot)"
+            alt="\Omega(\cdot)" />.<br>
+          Since <img src="https://tex.s2cms.ru/svg/%5COmega(%5Ccdot)" alt="\Omega(\cdot)" /> is not correct then <img
+            src="https://tex.s2cms.ru/svg/%5CTheta(%5Ccdot)" alt="\Theta(\cdot)" /> is also Wrong, Hence the given
+          statement is <code>False</code>.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><strong>n-naught not needed</strong>. Suppose that <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n%5Ed)"
+        alt="T(n) = O(n^d)" />, and that <img src="https://tex.s2cms.ru/svg/T(n)" alt="T(n)" /> is never equal to <img
+        src="https://tex.s2cms.ru/svg/%5Cinfty" alt="\infty" />. Prove rigorously that there exists a <img
+        src="https://tex.s2cms.ru/svg/c" alt="c" /> so that <img
+        src="https://tex.s2cms.ru/svg/0%20%5Cleqslant%20T(n)%20%5Cleqslant%20c%20%5Ccdot%20n%5Ed"
+        alt="0 \leqslant T(n) \leqslant c \cdot n^d" /> for all <img src="https://tex.s2cms.ru/svg/n%20%5Cgeqslant%201"
+        alt="n \geqslant 1" />. That is,
+      the definition of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /> holds with <img
+        src="https://tex.s2cms.ru/svg/n_0%20%3D%201" alt="n_0 = 1" />.</p>
+    <p>Solution:</p>
+    <p>Let <img src="https://tex.s2cms.ru/svg/T(n)" alt="T(n)" /> be an arbitrary polynomial function of order
+      <em>d</em> and <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n)" alt="T(n) = O(n)" />:</p>
+    <p align="center" style="text-align: center;"><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A%20%20T(n)%20%3D%20c_0%20%2B%20c_1%20%5Ccdot%20n%5E1%20%2B%20c_2%20%5Ccdot%20n%5E2%20%2B%20%5Ccdots%20%2B%20c_%7Bd-1%7D%20%5Ccdot%20n%5E%7Bd-1%7D%20%2B%20c_d%20%5Ccdot%20n%5Ed%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+  T(n) = c_0 + c_1 \cdot n^1 + c_2 \cdot n^2 + \cdots + c_{d-1} \cdot n^{d-1} + c_d \cdot n^d
+\end{equation*}" /></p>
+    <p>We know that</p>
+    <p align="center" style="text-align: center;"><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A%7CT(n)%7C%3D%7Cc_d%20%5Ccdot%20n%5Ed%2Bc_%7Bd-1%7D%20%5Ccdot%20n%5E%7Bd-1%7D%2B%5Ccdots%20c_0%7C%20%5Cleqslant%20%7Cc_d%7C%20%5Ccdot%20n%5Ed%2B%7Cc_%7Bd-1%7D%7C%20%5Ccdot%20n%5E%7Bd-1%7D%2B%5Ccdots%20%7Cc_0%7C%5C%5C%0A%7CT(n)%7C%20%5Cleqslant%20%7Cc_d%7C%20%5Ccdot%20n%5Ed%2B%7Cc_%7Bd-1%7D%7C%20%5Ccdot%20n%5E%7Bd-1%7D%2B%5Ccdots%7Cc_0%7C%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+|T(n)|=|c_d \cdot n^d+c_{d-1} \cdot n^{d-1}+\cdots c_0| \leqslant |c_d| \cdot n^d+|c_{d-1}| \cdot n^{d-1}+\cdots |c_0|\\
+|T(n)| \leqslant |c_d| \cdot n^d+|c_{d-1}| \cdot n^{d-1}+\cdots|c_0|
+\end{equation*}" /></p>
+    <p>we can also say that:</p>
+    <p align="center" style="text-align: center;"><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A%7CT(n)%7C%20%5Cleqslant%20%7Cc_d%7Cn%5Ed%2B%7Cc_%7Bd-1%7D%7Cn%5Ed%2B%5Ccdots%2B%7Cc_1%7C%5Ccdot%20n%5Ed%2B%7Cc_0%7C%5Ccdot%20n%5Ed%20%20%2C%5Ctext%7Bfor%20all%20%24n%20%5Cge%201%24%7D%5C%5C%20%5C%5C%0AT(n)%20%5Cleqslant%20%5Csum_%7Bi%3D0%7D%5Ed%7Cc_i%7C%5Ccdot%20n%5Ed%20%20%20%2C%5Ctext%7Bfor%20all%20%24n%20%5Cge%201%24%7D%5C%5C%20%5C%5C%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+|T(n)| \leqslant |c_d|n^d+|c_{d-1}|n^d+\cdots+|c_1|\cdot n^d+|c_0|\cdot n^d  ,\text{for all $n \ge 1$}\\ \\
+T(n) \leqslant \sum_{i=0}^d|c_i|\cdot n^d   ,\text{for all $n \ge 1$}\\ \\
+\end{equation*}" /></p>
+    <p>Since the above line is the summary / definition of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)"
+        alt="O(\cdot)" /> which states that</p>
+    <p align="center" style="text-align: center;"><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A%20%20T(n)%20%3D%20O(n%5Ed)%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+  T(n) = O(n^d)
+\end{equation*}" /></p>
+    <p>Which asserts our assumption, meaning our assumption regarding Big-Oh of <img src="https://tex.s2cms.ru/svg/T(n)"
+        alt="T(n)" />
+      was correct. Hence Proved.</p>
+  </li>
+  <li>
+    <p>Solve the following recurrence relations; i.e. express each one as <img
+        src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(f(n))" alt="T(n) = O(f(n))" />
+      for the tightest possible function <img src="https://tex.s2cms.ru/svg/f(n)" alt="f(n)" />, and give a short
+      justification. Be aware
+      that some parts might be slightly more involved than others. Unless otherwise stated,
+      assume <img src="https://tex.s2cms.ru/svg/T(1)%20%3D%201" alt="T(1) = 1" />.</p>
+    <ol>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/T(n)%20%3D%202T(n%2F2)%20%2B%203n" alt="T(n) = 2T(n/2) + 3n" /><br>
+          We can write the above statement as</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(n)%20%3D%202T(n%2F2)%20%2B%20O(n)%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(n) = 2T(n/2) + O(n)  
+\end{equation}" /></p>
+        <p>We apply the master theorem with <img src="https://tex.s2cms.ru/svg/a%3Db%3D2" alt="a=b=2" /> and with <img
+            src="https://tex.s2cms.ru/svg/d%3D1" alt="d=1" />.
+          We have <img src="https://tex.s2cms.ru/svg/a%3Db%5Ed" alt="a=b^d" />, and so the running time is <img
+            src="https://tex.s2cms.ru/svg/O(n%5Ed%20%5Ccdot%20log_2(n))%20%3D%20O(n%20%5Ccdot%20%0Alog_2n)" alt="O(n^d \cdot log_2(n)) = O(n \cdot 
+log_2n)" />.</p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/T(n)%20%3D%203T(n%2F4)%20%2B%20%5Csqrt%20n"
+            alt="T(n) = 3T(n/4) + \sqrt n" /><br>
+          We can write the above statement as</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(n)%20%3D%203T(n%2F4)%20%2B%20O(n%5E%7B%5Cfrac12%7D)%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(n) = 3T(n/4) + O(n^{\frac12})  
+\end{equation}" /></p>
+        <p>We apply the master theorem with <img src="https://tex.s2cms.ru/svg/a%3D3%2C%20b%3D4" alt="a=3, b=4" /> and
+          with <img src="https://tex.s2cms.ru/svg/d%3D%5Cfrac12" alt="d=\frac12" />.
+          We have <img src="https://tex.s2cms.ru/svg/a%3Eb%5Ed" alt="a&gt;b^d" />, and so the running time is <img
+            src="https://tex.s2cms.ru/svg/O(n%5E%7Blog_b(a)%7D)%20%3D%20O(n%5E%7Blog_4(3)%7D)"
+            alt="O(n^{log_b(a)}) = O(n^{log_4(3)})" />.</p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/T(n)%20%3D%207T(n%2F2)%20%2B%20%5CTheta(n%5E3)"
+            alt="T(n) = 7T(n/2) + \Theta(n^3)" /><br>
+          We can write the above statement as</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(n)%20%3D%207T(n%2F2)%20%2B%20%5CTheta(n%5E3)%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(n) = 7T(n/2) + \Theta(n^3)  
+\end{equation}" /></p>
+        <p>We apply the master theorem with <img src="https://tex.s2cms.ru/svg/a%3D7%2C%20b%3D2" alt="a=7, b=2" /> and
+          with <img src="https://tex.s2cms.ru/svg/d%3D3" alt="d=3" />.
+          We have <img src="https://tex.s2cms.ru/svg/a%3Cb%5Ed" alt="a&lt;b^d" />, and so the running time is <img
+            src="https://tex.s2cms.ru/svg/O(n%5Ed)%20%3D%20O(n%5E3)" alt="O(n^d) = O(n^3)" />.</p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/T(n)%20%3D%204T(n%2F2)%20%2B%20n%5E2%5Ccdot%20log(n)"
+            alt="T(n) = 4T(n/2) + n^2\cdot log(n)" /><br>
+          We can write the above statement as</p>
+        <p><img
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(n)%20%3D%204T(n%2F2)%20%2B%20n%5E2%20%5Ccdot%20log(n)%20%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(n) = 4T(n/2) + n^2 \cdot log(n)   
+\end{equation}" /><br>
+          <p></p><img src="t1.png" alt="Tree Structure of Recurrence Relation" style="width:100%">
+        </p>
+        We Can See from the tree that at Each level the Problem divides into 4 sub-problems at each level So we will use
+        Substitution :
+        At Second Level:</p>
+        <p align="center" style="text-align: center;"><img align="center"
+          src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(n)%20%3D%204T(n%2F2)%20%2B%20n%5E2log(n)%20%5C%5C%20%5C%5C%20%0AT(n)%20%3D%20%204(4T(n%2F4)%20%2B%20n%5E2%2F4%5Ccdot%20log(n%2F2))%20%2B%20n%5E2log(n)%20%20%20%5C%5C%20%5C%5C%20%0AT(n)%20%3D%20%2016(4T(n%2F8)%20%2B%20n%5E2%2F16%5Ccdot%20log(n%2F4))%20%2B%20n%5E2(log(n)%20%2B%20log(n%2F2))%20%20%5C%5C%20%5C%5C%20%0A%5Ccdots%20%5C%5C%20%5C%5C%0AT(n)%20%3D%20n%5E2(log(n)%20%2B%20log(n%2F2)%20%2B%20log(n%2F4)%20%2B%20log(n%2F8)%20%2B%20%5Cldots)%20%20%5C%5C%20%5C%5C%20%0AT(n)%20%3D%20n%5E2%5Ccdot%20%5Csum_%7Bi%3D0%7D%5E%7Blog(n)%7Dlog%5CBig(%20%5Cfrac%7Bn%7D%7B2%5Ei%7D%5CBig)%20%5Capprox%20n%5E2%20%5Ccdot%20log(n)%5Ccdot%20log(n%2B1)%20%5C%5C%20%5C%5C%0A%20T(n)%20%3D%20n%5E2%20%5Ccdot%20(log(n))%5E2%20%5C%5C%20%5C%5C%0A%5Cend%7Bequation%7D"
+          alt="\begin{equation*}  
+T(n) = 4T(n/2) + n^2log(n) \\ \\ 
+T(n) =  4(4T(n/4) + n^2/4\cdot log(n/2)) + n^2log(n)   \\ \\ 
+T(n) =  16(4T(n/8) + n^2/16\cdot log(n/4)) + n^2(log(n) + log(n/2))  \\ \\ 
+\cdots \\ \\
+T(n) = n^2(log(n) + log(n/2) + log(n/4) + log(n/8) + \ldots)  \\ \\ 
+T(n) = n^2\cdot \sum_{i=0}^{log(n)}log\Big( \frac{n}{2^i}\Big) \approx n^2 \cdot log(n)\cdot log(n+1) \\ \\
+T(n) = n^2 \cdot (log(n))^2 \\ \\
+\end{equation}" /></p>
+        <p>By the definition of of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /> we came to the
+          conclusion that: <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O((n%5Ccdot%20log(n))%5E2)"
+            alt="T(n) = O((n\cdot log(n))^2)" />, where <img src="https://tex.s2cms.ru/svg/n_0%20%3D%202%2C%20c%3D2"
+            alt="n_0 = 2, c=2" />.</p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/T(n)%20%3D%202T(n%2F3)%20%2B%20n%5Ec" alt="T(n) = 2T(n/3) + n^c" />, where
+          <img src="https://tex.s2cms.ru/svg/c%5Cgeqslant%201" alt="c\geqslant 1" /> is a constant<br>
+          We can write the above statement as</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0A%20T(n)%20%3D%202T(n%2F3)%20%2B%20n%5Ec%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+ T(n) = 2T(n/3) + n^c  
+\end{equation}" /></p>
+        <p>We apply the master theorem with <img src="https://tex.s2cms.ru/svg/a%3D2%2C%20b%3D3" alt="a=2, b=3" /> and
+          with <img src="https://tex.s2cms.ru/svg/d%3Dc" alt="d=c" />, where <img
+            src="https://tex.s2cms.ru/svg/c%5Cgeqslant%201" alt="c\geqslant 1" />.
+          We have <img src="https://tex.s2cms.ru/svg/a%3Cb%5Ec" alt="a&lt;b^c" /> , <img
+            src="https://tex.s2cms.ru/svg/%5Cforall%20c%20%5Cgeqslant%201" alt="\forall c \geqslant 1" /> and so the
+          running time is <img src="https://tex.s2cms.ru/svg/O(n%5Ed)%20%3D%20%0AO(n%5Ec)" alt="O(n^d) = 
+O(n^c)" />.</p>
+      </li>
+      <li>
+        <p><img src="https://tex.s2cms.ru/svg/T(n)%20%3D%202T%5Ccdot%20(%5Csqrt%20n)%20%2B%201"
+            alt="T(n) = 2T\cdot (\sqrt n) + 1" />, where <img src="https://tex.s2cms.ru/svg/T(2)%20%3D%201"
+            alt="T(2) = 1" /><br>
+          Let us consider <img src="https://tex.s2cms.ru/svg/n%20%3D%202%5E%7B2%5Ek%7D" alt="n = 2^{2^k}" /><br>
+          We can write the above statement as</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(2%5E%7B2%5Ek%7D)%20%3D%202%5Ccdot%20T(%5Csqrt%7B2%5E%7B2%5Ek%7D%7D)%20%2B%201%20%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(2^{2^k}) = 2\cdot T(\sqrt{2^{2^k}}) + 1   
+\end{equation}" /></p>
+        <p>Which will be</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(2%5E%7B2%5Ek%7D)%20%3D%202%5Ccdot%20T(2%5E%7B2%5E%7Bk-1%7D%7D)%20%2B%201%20%20%20%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(2^{2^k}) = 2\cdot T(2^{2^{k-1}}) + 1   
+\end{equation}" /></p>
+        <p>Now we can apply substitution here</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%202%5CcdotT(2%5E%7B2%5E%7Bk-1%7D%7D)%20%2B%201%20%5C%5C%20%5C%5C%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%202(2%5Ccdot%20T(2%5E%7B2%5E%7Bk-2%7D%7D)%20%2B%201)%20%2B%201%20%5C%5C%20%5C%5C%20%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%202%5E2(2%5Ccdot%20T(2%5E%7B2%5E%7Bk-3%7D%7D)%20%2B%201)%20%2B%201%20%2B%202%20%5C%5C%20%5C%5C%20%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%202%5E3(2%5Ccdot%20T(2%5E%7B2%5E%7Bk-4%7D%7D)%20%2B%201)%20%2B%201%20%2B%202%20%2B%204%5C%5C%20%5C%5C%20%0A%26%20%5Ccdots%20%5C%5C%20%5C%5C%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%202%5Ek%5Ccdot%20T(2%5E%7B2%5E0%7D)%20%2B%201%20%2B%202%20%2B%204%20%2B%20%5Ccdots%20%2B%202%5E%7Bk-1%7D%20%5C%5C%20%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%202%5Ek%20%2B%202%5E%7Bk-1%7D%20%2B%20%5Ccdots%20%2B%204%20%2B%202%20%2B%201%20%5C%5C%0AT(2%5E%7B2%5Ek%7D)%20%26%3D%20%20%5Csum_%7Bi%3D0%7D%5Ek%7B2%5Ei%7D%20%20%3D%202%5E%7Bk%2B1%7D%20-%201%5C%5C%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(2^{2^k}) &amp;= 2\cdotT(2^{2^{k-1}}) + 1 \\ \\
+T(2^{2^k}) &amp;= 2(2\cdot T(2^{2^{k-2}}) + 1) + 1 \\ \\ 
+T(2^{2^k}) &amp;= 2^2(2\cdot T(2^{2^{k-3}}) + 1) + 1 + 2 \\ \\ 
+T(2^{2^k}) &amp;= 2^3(2\cdot T(2^{2^{k-4}}) + 1) + 1 + 2 + 4\\ \\ 
+&amp; \cdots \\ \\
+T(2^{2^k}) &amp;= 2^k\cdot T(2^{2^0}) + 1 + 2 + 4 + \cdots + 2^{k-1} \\ 
+T(2^{2^k}) &amp;= 2^k + 2^{k-1} + \cdots + 4 + 2 + 1 \\
+T(2^{2^k}) &amp;=  \sum_{i=0}^k{2^i}  = 2^{k+1} - 1\\
+\end{equation}" /></p>
+        <p>Which means that</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(2%5E%7B2%5Ek%7D)%20%5Cleqslant%202%5E%7Bk%2B1%7D%20%5C%5C%20%20%5C%5C%0A%5Ctext%7BOn%20substituting%20back%20%242%5E%7B2%5Ek%7D%20%3D%20n%24%20%7D%20%5C%5C%20%5C%5C%0AT(n)%20%5Cleqslant%20log_2(log_2(2%5E%7Bk%2B1%7D))%20%3D%20log_2(k%20%2B%201)%20%5C%5C%20%5C%5C%20%0AT(n)%20%5Cleqslant%20log_2(k%20%2B%201)%20%20%5Cleqslant%20log_2(k%5E2)%20%5C%20%5Cforall%20%5C%20%20k%20%5Cgeqslant%202%20%5C%5C%20%5C%5C%0AT(n)%20%5Cleqslant%20log_2(k%5E2)%20%3D%202%5Ccdot%20log_2(k)%20%5C%20%5Cforall%20%5C%20%20k%20%5Cgeqslant%202%20%5C%5C%20%5C%5C%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(2^{2^k}) \leqslant 2^{k+1} \\  \\
+\text{On substituting back $2^{2^k} = n$ } \\ \\
+T(n) \leqslant log_2(log_2(2^{k+1})) = log_2(k + 1) \\ \\ 
+T(n) \leqslant log_2(k + 1)  \leqslant log_2(k^2) \ \forall \  k \geqslant 2 \\ \\
+T(n) \leqslant log_2(k^2) = 2\cdot log_2(k) \ \forall \  k \geqslant 2 \\ \\
+\end{equation}" /></p>
+        <p>Since the above line is the summary / definition of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)"
+            alt="O(\cdot)" /> giving us</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%20%20%0AT(n)%20%3D%20O(log(n))%20%5Ctext%7B%20for%20%24c%20%3D%202%2C%20n_0%20%3D%202%24%7D%20%5C%5C%20%5C%5C%0A%5Cend%7Bequation%7D"
+            alt="\begin{equation*}  
+T(n) = O(log(n)) \text{ for $c = 2, n_0 = 2$} \\ \\
+\end{equation}" /></p>
+        <p>Hence the Algorithm has Complexity <img src="https://tex.s2cms.ru/svg/O(log(n))" alt="O(log(n))" />.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Different-sized sub-problems. (6 points) Solve the following recurrence relation.
+      <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20T(n%2F2)%20%2B%20T(n%2F4)%20%2B%20T(n%2F8)%20%2B%20n"
+        alt="T(n) = T(n/2) + T(n/4) + T(n/8) + n" /> where <img src="https://tex.s2cms.ru/svg/T(1)%20%3D%201"
+        alt="T(1) = 1" />.<br>
+      Given Recurrence Relation:</p>
+    <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0AT(n)%20%3D%20T(n%2F2)%20%2B%20T(n%2F4)%20%2B%20T(n%2F8)%20%2B%20n%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+T(n) = T(n/2) + T(n/4) + T(n/8) + n
+\end{equation*}" /></p>
+    <p>Here we use substitution. Upon replacing the values of <img src="https://tex.s2cms.ru/svg/T(n%2F2)%2C%20T(n%2F4)"
+        alt="T(n/2), T(n/4)" /> and <img src="https://tex.s2cms.ru/svg/T(n%2F8)" alt="T(n/8)" /> we will get:</p>
+    <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Balign*%7D%0AT(n)%20%26%3D%20%5C%7BT(n%2F4)%20%2B%20T(n%2F8)%20%2B%20T(n%2F16)%20%2B%20n%2F2%5C%7D%20%5C%5C%20%20%0A%26%2B%5C%7BT(n%2F8)%20%2B%20T(n%2F16)%20%2B%20T(n%2F32)%20%2B%20n%2F4%5C%7D%20%5C%5C%20%20%0A%26%2B%5C%7BT(n%2F16)%20%2B%20T(n%2F32)%20%2B%20T(n%2F64)%20%2B%20n%2F8%5C%7D%20%2B%20n%0A%5Cend%7Balign*%7D"
+        alt="\begin{align*}
+T(n) &amp;= \{T(n/4) + T(n/8) + T(n/16) + n/2\} \\  
+&amp;+\{T(n/8) + T(n/16) + T(n/32) + n/4\} \\  
+&amp;+\{T(n/16) + T(n/32) + T(n/64) + n/8\} + n
+\end{align*}" /></p>
+    <p><img src="t2.png" alt="Tree Structure of Recurrence Relation" style="width:100%"></p>
+    <p>At the Top Level we have <img src="https://tex.s2cms.ru/svg/n" alt="n" /> operations,</p>
+    <p>At the Second Level we have <img src="https://tex.s2cms.ru/svg/n%2F2%20%2B%20n%2F4%20%2B%20n%2F8%20%3D%207n%2F8"
+        alt="n/2 + n/4 + n/8 = 7n/8" /> operations</p>
+    <p>At the Third Level we have <img
+        src="https://tex.s2cms.ru/svg/%5C%7Bn%2F4%2Bn%2F8%2Bn%2F16%5C%7D%2B%5C%7Bn%2F8%2Bn%2F16%2Bn%2F32%5C%7D%2B%5C%7Bn%2F16%2Bn%2F32%2Bn%2F64%5C%7D%20%3D%207n%2F8(n%2F2%20%2B%20n%2F8%20%2B%20n%2F16)%20%3D%2049n%2F64"
+        alt="\{n/4+n/8+n/16\}+\{n/8+n/16+n/32\}+\{n/16+n/32+n/64\} = 7n/8(n/2 + n/8 + n/16) = 49n/64" /></p>
+    <p>Similarly For each subsequent level the no. of operations will decrease down by a factor of <img
+        src="https://tex.s2cms.ru/svg/7%2F8" alt="7/8" /><br>
+      This happens because in the recurrence relation the sum of no. of operations of child Processes are <img
+        src="https://tex.s2cms.ru/svg/1%2F2%2B1%2F4%2B1%2F8%20%3D%207%2F8" alt="1/2+1/4+1/8 = 7/8" /> times the parent
+      Process.
+      Which will make the net number of operations:</p>
+    <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0AT(n)%20%3D%20n%20%2B%20%5Cfrac%7B7n%7D%7B8%7D%20%2B%20%5Cfrac%7B49n%7D%7B64%7D%20%2B%20%5Ccdots%20%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+T(n) = n + \frac{7n}{8} + \frac{49n}{64} + \cdots 
+\end{equation*}" /></p>
+    <p>Considering it as an Infinite G.P. the total number of operations will be:</p>
+    <p align="center" style="text-align: center;"><span style="float:right">(1)</span><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0AT(n)%20%3D%20n%5Ccdot%20%5Csum_%7B%5Cinfty%7D%5E%7Bi%3D0%7D%5Cfrac%7B7%5Ei%7D%7B8%5Ei%7D%20%5C%5C%20%5C%5C%20%5C%5C%0AT(n)%20%3D%20%5Cfrac%7Bn%7D%7B1-7%2F8%7D%20%20%3D%208%5Ccdot%20n%20%5C%5C%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+T(n) = n\cdot \sum_{\infty}^{i=0}\frac{7^i}{8^i} \\ \\ \\
+T(n) = \frac{n}{1-7/8}  = 8\cdot n \\
+\end{equation*}" /></p>
+    <p>Since <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%208n%5Cleqslant%209%5Ccdotn"
+        alt="T(n) = 8n\leqslant 9\cdotn" />, for all <img src="https://tex.s2cms.ru/svg/n%5Cgeqslant%201"
+        alt="n\geqslant 1" />. By the definition of <img src="https://tex.s2cms.ru/svg/O(%5Ccdot)" alt="O(\cdot)" /></p>
+    <p>We can say that <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n)" alt="T(n) = O(n)" />.</p>
+  </li>
+  <li>
+    <p>What’s wrong with this proof? (9 points) Consider the following recurrence relation:
+      <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20T(n%2F5)%20%2B%2010%5Ccdot%20n%20"
+        alt="T(n) = T(n/5) + 10\cdot n " /> for n=5, where <img
+        src="https://tex.s2cms.ru/svg/T(0)%20%3D%20T(1)%20%3D%20T(2)%20%3D%20T(3)%20%3D%20T(4)%20%3D%201"
+        alt="T(0) = T(1) = T(2) = T(3) = T(4) = 1" />. Consider the following three arguments.</p>
+    <ol>
+      <li>
+        <p>Claim: <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n)" alt="T(n) = O(n)" />. To see this, we will use
+          strong induction. The inductive
+          hypothesis is that <img src="https://tex.s2cms.ru/svg/T(k)%20%3D%20O(k)" alt="T(k) = O(k)" /> for all <img
+            src="https://tex.s2cms.ru/svg/5%20%5Cleqslant%20k%20%3C%20n" alt="5 \leqslant k &lt; n" />. For the base
+          case, we see
+          <img src="https://tex.s2cms.ru/svg/T(5)%20%3D%20T(0)%2B10%20%5Ccdot%205%20%3D%2051%20%3D%20O(1)"
+            alt="T(5) = T(0)+10 \cdot 5 = 51 = O(1)" />. For the inductive step, assume that the inductive
+          hypothesis holds for all <img src="https://tex.s2cms.ru/svg/k%20%3C%20n" alt="k &lt; n" />. Then</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0AT(n)%20%3D%20T(n%20-%205)%20%2B%2010%5Ccdot%20n%5C%5C%0A%5Cend%7Bequation*%7D"
+            alt="\begin{equation*}
+T(n) = T(n - 5) + 10\cdot n\\
+\end{equation*}" /></p>
+        <p>and by induction <img src="https://tex.s2cms.ru/svg/T(n-5)%20%3D%20O(n%2F5)%20" alt="T(n-5) = O(n/5) " /> ,
+          so</p>
+        <p align="center" style="text-align: center;"><img align="center"
+            src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n-5)%20%2B%2010%5Ccdot%20n%20%3D%20O(n)"
+            alt="T(n) = O(n-5) + 10\cdot n = O(n)" /></p>
+        <p>This establishes the inductive hypothesis for n. Finally, we conclude that<br>
+          <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n)" alt="T(n) = O(n)" /> for all <img
+            src="https://tex.s2cms.ru/svg/n" alt="n" /></p>
+      </li>
+      <li>
+        <p>Claim: <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n)" alt="T(n) = O(n)" />. To see this, we will use
+          the Master Method. We have
+          <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20a%5Ccdot%20T(n%2Fb)%20%2B%20O(n%5Ed)"
+            alt="T(n) = a\cdot T(n/b) + O(n^d)" />, for <img src="https://tex.s2cms.ru/svg/a%20%3D%20d%20%3D%201"
+            alt="a = d = 1" /> and <img src="https://tex.s2cms.ru/svg/b%20%3D%20%5Cfrac1%7B1%20-%205%2Fn%7D%7D"
+            alt="b = \frac1{1 - 5/n}}" />.<br>
+          Then we have that <img src="https://tex.s2cms.ru/svg/a%20%3C%20b%5Ed" alt="a &lt; b^d" /> (since <img
+            src="https://tex.s2cms.ru/svg/1%20%3C%201%2F(1%20%E2%88%92%205%2Fn" alt="1 &lt; 1/(1 − 5/n" />) for all <img
+            src="https://tex.s2cms.ru/svg/n%20%3E%200" alt="n &gt; 0" />), and the master theorem says that
+          this takes time <img src="https://tex.s2cms.ru/svg/O(n%5Ed)%20%3D%20O(n)" alt="O(n^d) = O(n)" />.</p>
+      </li>
+      <li>
+        <p>Claim: <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n%5E2)" alt="T(n) = O(n^2)" />. Imagine the
+          recursion tree for this problem. (Notice that
+          it’s not really a &quot;tree&quot;,&quot; since the degree is 1). At the top level we have a single
+          problem of size <em>n</em>. At the second level we have a single problem of size <img
+            src="https://tex.s2cms.ru/svg/n%20-%205" alt="n - 5" />. At
+          the <em>t</em>’th level we have a single problem of size <img src="https://tex.s2cms.ru/svg/n%20-%205t"
+            alt="n - 5t" />, and this continues for at most
+          <img src="https://tex.s2cms.ru/svg/t%20%3D%20%5Clfloor%20n%2F5%5Crfloor%20%2B%201"
+            alt="t = \lfloor n/5\rfloor + 1" /> levels. At the t’th level for <img
+            src="https://tex.s2cms.ru/svg/t%20%5Cleqslant%20%5Clfloor%20n%2F5%5Crfloor"
+            alt="t \leqslant \lfloor n/5\rfloor" />, the amount of work done is
+          <img src="https://tex.s2cms.ru/svg/10(n-5t)" alt="10(n-5t)" />. At the last level the amount of work is at
+          most <img src="https://tex.s2cms.ru/svg/1" alt="1" />. Thus the total amount
+          of work done is at most</p>
+      </li>
+    </ol>
+    <p align="center" style="text-align: center;"><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A1%20%2B%20%5Csum_%7Bt%3D0%7D%5E%7B%5Clfloor%20n%2F5%5Crfloor%7D%2010(n-5t)%20%3D%20O(n%5E2)%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+1 + \sum_{t=0}^{\lfloor n/5\rfloor} 10(n-5t) = O(n^2)
+\end{equation*}" /></p>
+    <ul>
+      <li>
+        <p>Which, if any, of these arguments are correct?<br>
+          <strong>All the arguments are wrong</strong>.</p>
+      </li>
+      <li>
+        <p>For each argument that you said was incorrect, explain why it is incorrect.
+          If you said that all three were incorrect, then give a correct argument.<br>
+          In the Provided Proofs there are following mistakes:</p>
+        <ol>
+          <li>In First Argument it was said that in Base case <img
+              src="https://tex.s2cms.ru/svg/T(5)%20%3D%20T(0)%2B10%20%5Ccdot%205%20%3D%2051%20%3D%20O(1)"
+              alt="T(5) = T(0)+10 \cdot 5 = 51 = O(1)" /> which can not be said about <img
+              src="https://tex.s2cms.ru/svg/T(n)" alt="T(n)" /> since we put value of <em>n</em> in <img
+              src="https://tex.s2cms.ru/svg/T(n)" alt="T(n)" /> the output is the value of the function and we cannot
+            say anything about the complexity.</li>
+          <li>In the Second Argument it is mentioned <img
+              src="https://tex.s2cms.ru/svg/b%20%3D%20%5Cfrac1%7B1%20-%205%2Fn%7D%7D" alt="b = \frac1{1 - 5/n}}" />,
+            which is wrong since the value of <em>b</em> is not constant. Which is the reason we cannot use Master
+            Theorem.</li>
+          <li>In the Third Argument <img
+              src="https://tex.s2cms.ru/svg/%201%20%2B%20%5Csum_%7Bt%3D0%7D%5E%7B%5Clfloor%20n%2F5%5Crfloor%7D%2010(n-5t)%20%3D%20O(n%5E2)"
+              alt=" 1 + \sum_{t=0}^{\lfloor n/5\rfloor} 10(n-5t) = O(n^2)" /> the Summation will range from <em>)</em>
+            to <em>n/5</em> - <em>1</em>. which is given wrong.</li>
+        </ol>
+        <p><strong>Correct Answer</strong>:<br>
+          Claim: <img src="https://tex.s2cms.ru/svg/T(n)%20%3D%20O(n%5E2)" alt="T(n) = O(n^2)" />. Considering the
+          recursion tree for this problem. At the top level we have a single problem of size <em>n</em>. At the first
+          level we have a single problem of size <img src="https://tex.s2cms.ru/svg/n%20-%205" alt="n - 5" />. At the
+          <em>(t+1)</em>'th level we have a single problem of size <img src="https://tex.s2cms.ru/svg/4n%20-%205t"
+            alt="4n - 5t" />, and this continues for at most <img
+            src="https://tex.s2cms.ru/svg/t%20%3D%20%5Clfloor%20n%2F5%20%5Crfloor" alt="t = \lfloor n/5 \rfloor" />
+          levels. At the <em>(t+1)</em>'th level for <img
+            src="https://tex.s2cms.ru/svg/t%20%3C%20%5Clfloor%20n%2F5%20%5Crfloor" alt="t &lt; \lfloor n/5 \rfloor" />,
+          the amount of work done is
+          <img src="https://tex.s2cms.ru/svg/10(n-5t)" alt="10(n-5t)" /> . At the last level the amount of work is at
+          most <img src="https://tex.s2cms.ru/svg/1" alt="1" />. Thus the total amount
+          of work done is at most</p>
+      </li>
+    </ul>
+    <p align="center" style="text-align: center;"><img align="center"
+        src="https://tex.s2cms.ru/svg/%5Cbegin%7Bequation*%7D%0A1%20%2B%20%5Csum_%7Bt%3D0%7D%5E%7B%5Clfloor%20n%2F5%5Crfloor%20-%201%7D%2010(n-5t)%20%3D%20O(n%5E2)%0A%5Cend%7Bequation*%7D"
+        alt="\begin{equation*}
+1 + \sum_{t=0}^{\lfloor n/5\rfloor - 1} 10(n-5t) = O(n^2)
+\end{equation*}" /></p>
+  </li>
+</ol>
