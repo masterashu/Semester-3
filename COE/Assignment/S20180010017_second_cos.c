@@ -21,9 +21,11 @@ char* int_to_binary(int num){
     }
     tmp[i++] = '0';
     // printf("! %s \n", tmp);
-    for (int j = 0; j < i; j++){
+    int j;
+    for (j = 0; j < i; j++){
         binary[j] = tmp[i-j-1];
     }
+    binary[j] = 0;
     return binary;
 }
 
