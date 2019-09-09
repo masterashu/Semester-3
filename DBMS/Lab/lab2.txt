@@ -1,0 +1,138 @@
+SQL LIKE OPERATOR:
+	
+	There are two wildcards often used with like operator
+	1. % -> represents zero,one or multiple characters
+	2. _ -> represents a single character.
+
+1.create a student table having following fields:
+	
+	Field      Type   
+
++------------+--------------
+| student_id | int(11)      
+| first_name | varchar(255) 
+| last_name  | varchar(255) 
+| city       | varchar(55)  
+| marks      | int(11)      
+| gender     | char(1)      
++------------+--------------
+
+2.Insert the following data 
+
++------------+------------+-----------+---------+-------+--------+
+| student_id | first_name | last_name | city    | marks | gender |
++------------+------------+-----------+---------+-------+--------+
+|          2 | ravish     | kumar     | patna   |    95 | M      |
+|          3 | priyanka   | agarwal   | kolkata |    85 | F      |
+|          4 | rahul      | kumar     | mumbai  |    30 | M      |
+|          1 | rahul      | gupta     | mumbai  |    70 | M      |
++------------+------------+-----------+---------+-------+--------+
+
+3.List details of all the students whose first name starts with "r".
+
+	SELECT * FROM student WHERE first_name LIKE 'r%';
+
+4.List details of all the students whose first name ends with "r".
+
+	SELECT * FROM student WHERE first_name LIKE '%r';
+
+5.List details of all the students whose last name contains "ar".
+	
+	SELECT * FROM student WHERE last_name LIKE '%ar%';
+
+6.List details of all the students whose first name have "i" at 3rd position.
+	
+	SELECT * FROM student WHERE first_name LIKE '__i%';
+
+7.List details of all the students whose first name starts  with "r" and at least 3 characters in length.
+
+	SELECT * FROM student WHERE first_name LIKE 'r__%';
+
+8. List details of all the students whose first name starts with 'p' and ends with 'a'
+	
+	SELECT * FROM students WHERE first_name LIKE 'p%a';
+
+9. List details of all the students whose first name does not starts with 'a'
+
+	SELECT * FROM students WHERE first_name NOT LIKE 'a%';
+	
+
+Questions:
+	
+	1. List details of all those students whose city name starts with any character followed by "avish"
+	
+	2. List details of all those students whose first_name starts with 'r' ends with 'l' and contains 'h'
+
+10. List details of all the students whose last name starts with "g" or "a";
+
+	select * from student where last_name REGEXP '^[ga]';
+
+11. List details of all the students whose last name doesn't start with "g" or "a";
+
+	select first_name from student where last_name REGEXP '^[^ga]';
+	select first_name from student where last_name not REGEXP '^[ga]';
+
+12. List details of all the students whose city name starts with any character between "i" and "q";
+
+	SELECT * FROM student WHERE city LIKE '^[i-q]';
+
+13. List details of all the students whose city name is either "patna" or "kolkata";
+
+	SELECT * FROM student WHERE city IN ('patna', 'kolkata');
+
+14. List details of all the students with marks between 60 to 90 ;
+
+	SELECT * FROM student WHERE marks BETWEEN 60 AND 90;
+
+15. List details of all the students with marks between 60 to 90 where student_id should not be 1 or 2;
+
+	SELECT * FROM student WHERE marks BETWEEN 60 AND 90 AND student_id NOT IN (1,2);
+
+16.  Find the no. of students in each city
+	
+	select count(student_id),city from student group by city;
+
+17.  Find the no. of students in each city and sort them in descending order.
+	
+	select count(student_id),city from student group by city order by count(student_id) desc;
+
+18. Find the cities having more than 1 student.
+
+	select count(student_id),city from student group by city having count(student_id)>1;
+
+
+
+
+	mysql -u root -p --local-infile student_database
+
+Create the following table:
+
+	Student(snum: integer, sname: string, major: string, level: string,age: integer)
+
+	Class(name: string, meets at: string, room: string, fid: integer)
+
+	Enrolled(snum: integer, cname: string)
+
+	Faculty(fid: integer, fname: string, deptid: integer)
+
+
+Import data from text file to mysql database:
+	
+	load data local infile "file_location" into table student columns terminated by ',';
+
+	load data local infile "file_location" into table Class columns terminated by ',';
+
+	load data local infile "file_location" into table Enrolled columns terminated by ',';
+
+	load data local infile "file_location" into table Faculty columns terminated by ',';
+
+
+1. Find the name of the youngest student.
+2. List all students in decreasing order of their ages.
+3. Find the names of faculty members who teach in every room in which some class is taught.
+4. Find the names of students who enroll in all courses.
+5. Find the names of all classes that either meet in room R128 or have five or more students enrolled.
+6. List all students in decreasing order of their ages.
+	
+
+

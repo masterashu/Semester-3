@@ -113,9 +113,11 @@ int main(int argc, char *argv[]) {
     // show_bytes(P, 12);
     // // show_bytes(P, 16);
 
-    int a = ;
+    int a = 0x1234567890;
+    
     printf("%d\n", a);
-    int b = ~(a-1);
-    printf("%d\n", b);
+    // printf("%d\n", b);
+    byte_pointer aa = (byte_pointer)&a;
+    show_bytes(aa, 4);
     return 0;
 }
