@@ -2,7 +2,6 @@
 #include <stdlib.h>
 // Considering max number to between 0 to 99
 
-
 typedef struct list{
     int val;
     struct list* next;
