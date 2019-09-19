@@ -260,8 +260,18 @@ void printLevelOrder(Employee* root) {
 
 Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* emp2) {
     // Creating Stacks for both Employees
-    Node* Top1 = newNode(findEmployee(Names, emp1));
-    Node* Top2 = newNode(findEmployee(Names, emp2));
+    Employee* Emp1 = findEmployee(Names, emp1);
+    if (Emp1 == NULL) {
+        printf("Employee 1 Doesn\'t Exist.\nAborting Adding Employee...\n");
+        return;
+    }
+    Employee* Emp2 = findEmployee(Names, emp2);
+    if (Emp2 == NULL) {
+        printf("Employee 2 Doesn\'t Exist.\nAborting Adding Employee...\n");
+        return;
+    }
+    Node* Top1 = newNode(Emp1);
+    Node* Top2 = newNode(Emp2);
     Node* tmp;
 
     // Push the Employees in the path from Employee1 to CEO
