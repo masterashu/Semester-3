@@ -57,7 +57,7 @@ Employee* newEmployee(char* name, int level) {
     return new;
 }
 
-// Print an Employee's Detail
+// Print an Employee's Detail  O(1)
 void printEmployee(Employee* employee) {
     printf("\nEmployee Name: %s\n", employee->name);
     printf("Employee Level: %d\n", employee->level);
@@ -65,29 +65,31 @@ void printEmployee(Employee* employee) {
     printf("--------------------------------------\n");
 }
 
-// Search for a given Employee in the Tree using DFS (Not optimal)
-// Employee* findEmployee(Employee* root, char* name) {
-//     if (root != NULL) {
-//         if (strcmp(root->name, name) == 0) {
-//             return root;
-//         }
-//         if (root->child != NULL) {
-//             Employee* tmp = findEmployee(root->child, name);
-//             if (tmp != NULL) {
-//                 return tmp;
-//             }
-//         }
-//         if (root->next != NULL) {
-//             Employee* tmp = findEmployee(root->next, name);
-//             if (tmp != NULL) {
-//                 return tmp;
-//             }
-//         }
-//     }
-//     return NULL;
-// }
+// Search for a given Employee in the Tree using DFS (Not optimal) O(n)
 
-// Add Employee Entry in the Trie
+/*Employee* findEmployee(Employee* root, char* name) {
+    if (root != NULL) {
+        if (strcmp(root->name, name) == 0) {
+            return root;
+        }
+        if (root->child != NULL) {
+            Employee* tmp = findEmployee(root->child, name);
+            if (tmp != NULL) {
+                return tmp;
+            }
+        }
+        if (root->next != NULL) {
+            Employee* tmp = findEmployee(root->next, name);
+            if (tmp != NULL) {
+                return tmp;
+            }
+        }
+    }
+    return NULL;
+}
+*/
+
+// Add Employee Entry in the Trie O(m)
 void addNameDict(NameDict* root, char* name, Employee* employee) {
     while (*name != 0) {
         if (root->ch[index(*name)] == NULL) {
@@ -100,7 +102,7 @@ void addNameDict(NameDict* root, char* name, Employee* employee) {
     root->emp = employee;
 }
 
-// Find Employee Pointer from Trie
+// Find Employee Pointer from Trie O(m)
 Employee* findEmployee(NameDict* Names, char* name) {
     while (*name != 0) {
         if (Names->ch[index(*name)] == NULL) {
@@ -112,18 +114,9 @@ Employee* findEmployee(NameDict* Names, char* name) {
     return Names->emp;
 }
 
-// Delete a Entry from Trie
+// Delete a Entry from Trie O(m)
 NameDict* deleteNameDict(NameDict* Names, char* name) {
-    if (Names == NULL) {
-        return NULL;
-    } else {
-        if (Names->ch[index(*name)] != NULL) {
-            Names->ch[index(*name)] = deleteNameDict(Names->ch[index(*name)], name + 1);
-            if (Names->ch[index(*name)] == NULL) {
-                Names->child--;
-            }
-        }
-    }
+    
     if (*name == 0) {
         if (Names->emp != NULL) {
             if (Names->child == 0){
@@ -141,46 +134,50 @@ NameDict* deleteNameDict(NameDict* Names, char* name) {
             return NULL;
         }
     }
+    if (Names == NULL) {
+        return NULL;
+    } else {
+        if (Names->ch[index(*name)] != NULL) {
+            Names->ch[index(*name)] = deleteNameDict(Names->ch[index(*name)], name + 1);
+            if (Names->ch[index(*name)] == NULL) {
+                Names->child--;
+            }
+        }
+    }
     return Names;
 }
 
-// Add Employee to the Tree
+// Add Employee to the Tree O(m)
 void addEmployee(Employee* root, NameDict* Names, char* emp, char* boss) {
     Employee* Boss = findEmployee(Names, boss);
     if (Boss == NULL) {
         printf("Boss Doesn\'t Exist.\nAborting Adding Employee...\n");
         return;
     }
-    // Employee doesn't have anyone under him
+    // Employee doesn't have anyone under it
     if (Boss->child == NULL) {
         Boss->child = newEmployee(emp, Boss->level + 1);
         Boss->child->boss = Boss;
         addNameDict(Names, emp, Boss->child);
     } else {
-        Employee* tmp = Boss->child;
-        while (tmp->next != NULL) {
-            tmp = tmp->next;
-        }
-        tmp->next = newEmployee(emp, tmp->level);
-        addNameDict(Names, emp, tmp->next);
-        tmp->next->boss = Boss;
+        // Insert the new node in the child linked list
+        Employee* tmp = newEmployee(emp, Boss->level + 1);
+        tmp->next = Boss->child;
+        Boss->child = tmp;
+        Boss->child->boss = Boss;
+        addNameDict(Names, emp, Boss->child);
     }
 }
 
+// Deleting an Employee = O(m + d) where are d is no. of coworkers
 void deleteEmployee(Employee* root, char* name, char* substitute, NameDict** Names) {
     Employee* Emp = findEmployee(*Names, name);
     if (Emp == NULL) {
-        printf("Employee Doesn\'t Exist.\nAborting Adding Employee...\n");
+        printf("Employee Doesn\'t Exist.\nAborting Deleting Employee...\n");
         return;
     }
     // Finding Substitute at Same Level
     Employee* Sub = findEmployee(*Names, substitute);
-
-    // Employee* Sub = Emp->boss->child;
-    // while (Sub != NULL && strcmp(Sub->name, substitute)) {
-    //     Sub = Sub->next;
-    // }
-    // Substitute with given name does not exist
     if (Sub == NULL) {
         printf("Error! The Substitute with that name does not exist!\n");
         return;
@@ -201,8 +198,8 @@ void deleteEmployee(Employee* root, char* name, char* substitute, NameDict** Nam
         Employee* boss = Emp->boss;
         boss->child = Emp->next;
         free(Emp);
-        *Names = deleteNameDict(*Names, name);
     } else {
+        // If element has neighbours 
         Employee *tmp = Emp->boss->child, *tmp2;
         while (tmp != NULL) {
             if (tmp->next == Emp) {
@@ -215,8 +212,11 @@ void deleteEmployee(Employee* root, char* name, char* substitute, NameDict** Nam
             }
         }
     }
+    *Names = deleteNameDict(*Names, name);
+
 }
 
+// Create a new Node for Queue
 Node* newNode(Employee* employee) {
     Node* tmp = (Node*)malloc(sizeof(Node));
     tmp->employee = employee;
@@ -224,6 +224,7 @@ Node* newNode(Employee* employee) {
     return tmp;
 }
 
+// Print Level Order of Employees using Queue  Complexity: O(n)
 void printLevelOrder(Employee* root) {
     // Initializing the Queue
     printf("--CEO--: ");
@@ -232,11 +233,13 @@ void printLevelOrder(Employee* root) {
     Node* tmp;
     int length = 1;
     int current_level = 1;
+    // While Queue is not Empty
     while (length > 0) {
         if (head->employee->child != NULL) {
             Employee* tmp2 = head->employee->child;
+            // Add Child Elements
             while (tmp2 != NULL) {
-                tail->next = newNode(tmp2);
+                 tail->next = newNode(tmp2);
                 tail = tail->next;
                 length++;
                 tmp2 = tmp2->next;
@@ -258,17 +261,18 @@ void printLevelOrder(Employee* root) {
     printf("--------------------------------------\n");
 }
 
+// Find Lowest Common Boss Complexity: O(H) where H is levels in organisation
 Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* emp2) {
     // Creating Stacks for both Employees
     Employee* Emp1 = findEmployee(Names, emp1);
     if (Emp1 == NULL) {
         printf("Employee 1 Doesn\'t Exist.\nAborting Adding Employee...\n");
-        return;
+        return NULL;
     }
     Employee* Emp2 = findEmployee(Names, emp2);
     if (Emp2 == NULL) {
         printf("Employee 2 Doesn\'t Exist.\nAborting Adding Employee...\n");
-        return;
+        return NULL;
     }
     Node* Top1 = newNode(Emp1);
     Node* Top2 = newNode(Emp2);
@@ -313,8 +317,17 @@ Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* em
         free(tmp);
     }
 
-    return lowest_common_boss;
+    // If one of the members is the boss of another
+    if (lowest_common_boss == Emp1 || lowest_common_boss == Emp2) {
+        return lowest_common_boss->boss;
+    }
+    else{
+        return lowest_common_boss;
+    }
 }
+
+
+// MAIN
 
 int main(int argc, char const* argv[]) {
     char company[20];
@@ -355,7 +368,10 @@ int main(int argc, char const* argv[]) {
                 scanf("%s", emp1);
                 printf("Employee2 Name :> ");
                 scanf("%s", emp2);
-                printf("Lowest Common Ancestor: %s\n", (lowestCommonBoss(Employees, Names, emp1, emp2)->name));
+                Employee* lcb = lowestCommonBoss(Employees, Names, emp1, emp2);
+                if (lcb != NULL){
+                    printf("Lowest Common Ancestor: %s\n", lcb->name);
+                }
                 break;
             case 4:
                 printLevelOrder(Employees);
