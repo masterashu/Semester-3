@@ -5,13 +5,13 @@
  * S20180010017
  * Section - B
  */
-
+  
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define index(x) tolower(x) - 'a'
-
+  
 // Structure to store Employee Details
 typedef struct employee {
     // int employee_id;
@@ -21,20 +21,20 @@ typedef struct employee {
     struct employee* child;
     struct employee* next;
 } Employee;
-
+  
 // Temporary structure for Queue for Level Order Traversal
 typedef struct node {
     Employee* employee;
     struct node* next;
 } Node;
-
+  
 // Trie for O(m) name Lookup
 typedef struct name_dict {
     struct name_dict* ch[26];
     Employee* emp;
     short child;
 } NameDict;
-
+  
 // Creating a New Trie Object
 NameDict* newNameDict() {
     NameDict* new = (NameDict*)malloc(sizeof(NameDict));
@@ -45,7 +45,7 @@ NameDict* newNameDict() {
     new->child = 0;
     return new;
 }
-
+  
 // Creating a New Employee Object
 Employee* newEmployee(char* name, int level) {
     Employee* new = (Employee*)malloc(sizeof(Employee));
@@ -56,7 +56,7 @@ Employee* newEmployee(char* name, int level) {
     new->next = NULL;
     return new;
 }
-
+  
 // Print an Employee's Detail  O(1)
 void printEmployee(Employee* employee) {
     printf("\nEmployee Name: %s\n", employee->name);
@@ -64,9 +64,9 @@ void printEmployee(Employee* employee) {
     printf("Employee Boss: %s\n", employee->boss);
     printf("--------------------------------------\n");
 }
-
+  
 // Search for a given Employee in the Tree using DFS (Not optimal) O(n)
-
+  
 /*Employee* findEmployee(Employee* root, char* name) {
     if (root != NULL) {
         if (strcmp(root->name, name) == 0) {
@@ -88,7 +88,7 @@ void printEmployee(Employee* employee) {
     return NULL;
 }
 */
-
+  
 // Add Employee Entry in the Trie O(m)
 void addNameDict(NameDict* root, char* name, Employee* employee) {
     while (*name != 0) {
@@ -101,7 +101,7 @@ void addNameDict(NameDict* root, char* name, Employee* employee) {
     }
     root->emp = employee;
 }
-
+  
 // Find Employee Pointer from Trie O(m)
 Employee* findEmployee(NameDict* Names, char* name) {
     while (*name != 0) {
@@ -113,7 +113,7 @@ Employee* findEmployee(NameDict* Names, char* name) {
     }
     return Names->emp;
 }
-
+  
 // Delete a Entry from Trie O(m)
 NameDict* deleteNameDict(NameDict* Names, char* name) {
     
@@ -146,7 +146,7 @@ NameDict* deleteNameDict(NameDict* Names, char* name) {
     }
     return Names;
 }
-
+  
 // Add Employee to the Tree O(m)
 void addEmployee(Employee* root, NameDict* Names, char* emp, char* boss) {
     Employee* Boss = findEmployee(Names, boss);
@@ -168,7 +168,7 @@ void addEmployee(Employee* root, NameDict* Names, char* emp, char* boss) {
         addNameDict(Names, emp, Boss->child);
     }
 }
-
+  
 // Deleting an Employee = O(m + d) where are d is no. of coworkers
 void deleteEmployee(Employee* root, char* name, char* substitute, NameDict** Names) {
     Employee* Emp = findEmployee(*Names, name);
@@ -191,7 +191,7 @@ void deleteEmployee(Employee* root, char* name, char* substitute, NameDict** Nam
         tmp->next = Sub->child;
         Sub->child = Emp->child;
     }
-
+  
     // Deleting the Employee
     // If Employee is the First one in Level-Wise Linked List
     if (Emp->boss->child == Emp) {
@@ -213,9 +213,9 @@ void deleteEmployee(Employee* root, char* name, char* substitute, NameDict** Nam
         }
     }
     *Names = deleteNameDict(*Names, name);
-
+  
 }
-
+  
 // Create a new Node for Queue
 Node* newNode(Employee* employee) {
     Node* tmp = (Node*)malloc(sizeof(Node));
@@ -223,7 +223,7 @@ Node* newNode(Employee* employee) {
     tmp->next = NULL;
     return tmp;
 }
-
+  
 // Print Level Order of Employees using Queue  Complexity: O(n)
 void printLevelOrder(Employee* root) {
     // Initializing the Queue
@@ -245,12 +245,12 @@ void printLevelOrder(Employee* root) {
                 tmp2 = tmp2->next;
             }
         }
-
+  
         if (head->employee->level > current_level) {
             printf("\nLevel %d: ", current_level);
             current_level++;
         }
-
+  
         printf("%s ", head->employee->name);
         tmp = head;
         head = head->next;
@@ -260,7 +260,7 @@ void printLevelOrder(Employee* root) {
     printf("\n");
     printf("--------------------------------------\n");
 }
-
+  
 // Find Lowest Common Boss Complexity: O(H) where H is levels in organisation
 Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* emp2) {
     // Creating Stacks for both Employees
@@ -277,23 +277,23 @@ Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* em
     Node* Top1 = newNode(Emp1);
     Node* Top2 = newNode(Emp2);
     Node* tmp;
-
+  
     // Push the Employees in the path from Employee1 to CEO
     while (Top1->employee->boss != NULL) {
         tmp = Top1;
         Top1 = newNode(tmp->employee->boss);
         Top1->next = tmp;
     }
-
+  
     // Push the Employees in the path from Employee2 to CEO
     while (Top2->employee->boss != NULL) {
         tmp = Top2;
         Top2 = newNode(tmp->employee->boss);
         Top2->next = tmp;
     }
-
+  
     Employee* lowest_common_boss = Top1->employee;
-
+  
     // Pop Out Common Elements till any Difference Ocuur
     while (Top1 != NULL && Top2 != NULL && strcmp(Top1->employee->name, Top2->employee->name) == 0) {
         lowest_common_boss = Top1->employee;
@@ -304,7 +304,7 @@ Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* em
         Top2 = Top2->next;
         free(tmp);
     }
-
+  
     // Free up Remaining Memory
     while (Top1 != NULL) {
         tmp = Top1;
@@ -316,7 +316,7 @@ Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* em
         Top2 = Top2->next;
         free(tmp);
     }
-
+  
     // If one of the members is the boss of another
     if (lowest_common_boss == Emp1 || lowest_common_boss == Emp2) {
         return lowest_common_boss->boss;
@@ -325,10 +325,10 @@ Employee* lowestCommonBoss(Employee* root, NameDict *Names, char* emp1, char* em
         return lowest_common_boss;
     }
 }
-
-
+  
+  
 // MAIN
-
+  
 int main(int argc, char const* argv[]) {
     char company[20];
     printf("Enter Name of CEO: ");
@@ -337,7 +337,7 @@ int main(int argc, char const* argv[]) {
     Employee* Employees = newEmployee(company, 1);
     addNameDict(Names, company, Employees);
     int choice = 1;
-
+  
     while (choice != 0) {
         printf("Press 1 to Add an Employee\n");
         printf("Press 2 to Delete an Employee\n");
@@ -347,7 +347,7 @@ int main(int argc, char const* argv[]) {
         printf("Enter Choice: ");
         scanf("%d", &choice);
         char emp[20], emp1[20], emp2[20], boss[20];
-
+  
         switch (choice) {
             case 1:
                 printf("Employee Name :> ");
@@ -381,6 +381,7 @@ int main(int argc, char const* argv[]) {
         }
     }
     printLevelOrder(Employees);
-
+  
     return 0;
 }
+  
