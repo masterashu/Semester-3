@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "mm.h": "c",
+        "fcycmm.h": "c",
+        "clock.h": "c"
+    }
+}

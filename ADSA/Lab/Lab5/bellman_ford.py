@@ -33,14 +33,14 @@ def BellmanFord(G, start):
 
 
 if __name__ == "__main__":
-    G = dict()
-    for i in range(1,int(input("Enter No. of vertices: "))+1):
-        G[i] = []
-    for _ in range(int(input("Enter No. of Edges: "))):
-        i,j,w = map(int, input().split())
-        G[i].append((j,w))
+    # G = dict()
+    # for i in range(1,int(input("Enter No. of vertices: "))+1):
+    #     G[i] = []
+    # for _ in range(int(input("Enter No. of Edges: "))):
+    #     i,j,w = map(int, input().split())
+    #     G[i].append((j,w))
     # print(G)
-    # G = {1: [(3, 1), (4, 3), (2, 7)], 2: [(1, 7), (5, 3), (4, 8)], 3: [(1, 1), (4, 4)], 4: [(3, 4), (1, 3), (2, 8), (5, 5)], 5: [(2, 3), (4, 5)]}
+    G = {1: [(3, 1), (4, 3), (2, 7)], 2: [(1, 7), (5, 3), (4, 8)], 3: [(1, 1), (4, 4)], 4: [(3, 4), (1, 3), (2, 8), (5, 5)], 5: [(2, 3), (4, 5)]}
     BellmanFord(G, int(input("Enter Starting Vertex: ")))
 
 

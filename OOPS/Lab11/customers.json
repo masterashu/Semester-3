@@ -1,0 +1,39 @@
+[
+    {
+        "age" : 20,
+        "mobile" : "2489842984",
+        "name" : "Ashutosh Chauhan",
+        "uid" : "81484228283"
+    },
+    {
+        "age" : 20,
+        "mobile" : "424346464644",
+        "name" : "Abhijt Patil",
+        "uid" : "81484238283"
+    },
+    {
+        "age" : 20,
+        "mobile" : "646466436364",
+        "name" : "Ram Nad",
+        "uid" : "81484228483"
+    },
+    {
+        "age" : 20,
+        "mobile" : "6364643634664",
+        "name" : "Lakshay Sadhu",
+        "uid" : "81333228283"
+    },
+    {
+        "age" : 20,
+        "mobile" : "6463646364634",
+        "name" : "Ketan Lambat",
+        "uid" : "81484328283"
+    },
+    {
+        "age" : 17,
+        "mobile" : "42453364664",
+        "name" : "Ashutosh Singh",
+        "uid" : "242358843"
+    }
+]
+

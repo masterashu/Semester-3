@@ -1,6 +1,6 @@
-#define MINN 50
-#define MAXN 700
-#define INCN 50
+#define MINN 200
+#define MAXN 1000
+#define INCN 100
 
 typedef double array[MAXN][MAXN+513];
 

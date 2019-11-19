@@ -1,65 +1,28 @@
 #include <iostream>
+#include <thread>
+#include <bits/stl_threads.h>
+
 using namespace std;
 
-// Standard Class
-class Hello {
-   private:
-    int num;
-    double rate;
-
+class FP1 {
    public:
-    // Constructor
-    Hello(){
-        this->num = 0;
-        this->rate = 0;
-    }
-    Hello(int num, double rate){
-        this->num = num;
-        this->rate = rate;
-    }
-    // Getters
-    double Rate() {
-        return this->rate;
-    }
-
-    int Num() {
-        return this->Num;
-    }
-
-    // Setters
-    void Rate(double rate) {
-        this->rate = rate;
-    }
-
-    void Num(int Num) {
-        this->Num = Num;
+    void operator()(int x, string str) {
+        for (int i = 0; i < x; i++) {
+            cout << "Thread 1 printing " << str;
+        }
     }
 };
 
-// Read Only Class
-class HelloReadOnly {
-   private:
-    int num;
-    double rate;
-
-   public:
-    // Constructor
-    HelloReadOnly(){
-        this->num = 0;
-        this->rate = 0;
+void SP1(int x, string str) {
+    for (int i = 0; i < x; i++) {
+        cout << "Thread 2 printing " << str;
     }
+}
 
-    HelloReadOnly(int num, double rate){
-        this->num = num;
-        this->rate = rate;
-    }
-    // Getters
-    double Rate() {
-        return this->rate;
-    }
-
-    int Num() {
-        return this->Num;
-    }
-};
-
+int main(int argc, char const *argv[]) {
+    std::thread thread1(FP1(), 10, "Hello World!\n");
+    std::thread thread2(SP1, 10, "Another Thread running!\n");
+    // thread1.join();
+    thread2.join();
+    return 0;
+}
