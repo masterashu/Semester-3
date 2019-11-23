@@ -1,9 +1,14 @@
-prog2: prog2.cpp
-	g++ -Wall prog2.cpp -o prog2  -I/usr/include/cppconn  -L/usr/lib -lmysqlcppconn -std=c++11
+a1: assignment1.cpp
+	g++ -Wall assignment1.cpp dist/jsoncpp.cpp -o assignment1  -I/usr/include/cppconn  -L/usr/lib -lmysqlcppconn 
 
+a1s: assignment1s.cpp
+	g++ -Wall assignment1s.cpp dist/jsoncpp.cpp -o assignment1s  -I/usr/include/cppconn  -L/usr/lib -lmysqlcppconn 
+
+a2: assignment2.cpp
+	g++ -Wall assignment2.cpp dist/jsoncpp.cpp -o assignment2  -I/usr/include/cppconn  -L/usr/lib -lmysqlcppconn 
 
 %: %.cpp
-	g++ -Wall $@.cpp -o $@  -I/usr/include/cppconn  -L/usr/lib -lmysqlcppconn -std=c++11
+	g++ -Wall $@.cpp dist/jsoncpp.cpp  -o $@  -I/usr/include/cppconn  -L/usr/lib -lmysqlcppconn -std=c++11
 
 
 # prog1: prog1.cpp

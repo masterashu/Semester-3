@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Paper Presentation",
+        "start_time": "2019-12-01 10:00:00",
+        "end_time": "2019-12-01 10:15:00",
+        "max_participants": 10
+    },
+    {
+        "id": 2,
+        "title": "Poster Presentation",
+        "start_time": "2019-12-01 10:00:00",
+        "end_time": "2019-12-01 10:15:00",
+        "max_participants": 10
+    },
+    {
+        "id": 3,
+        "title": "Quiz           ",
+        "start_time": "2019-12-01 15:00:00",
+        "end_time": "2019-12-01 15:30:00",
+        "max_participants": 20
+    },
+    {
+        "id": 4,
+        "title": "Cultural Program",
+        "start_time": "2019-12-01 17:00:00",
+        "end_time": "2019-12-01 18:15:00",
+        "max_participants": 5
+    }
+]
