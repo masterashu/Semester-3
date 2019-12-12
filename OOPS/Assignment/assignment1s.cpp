@@ -38,7 +38,8 @@ void load_data_to_server() {
     try {
         sql::Driver* driver = sql::mysql::get_driver_instance();
         /* Using the Driver to create a connection */
-        cout << "Creating to MySQL Server on " << url << " ..." << endl << endl;
+        cout << "Creating to MySQL Server on " << url << " ..." << endl
+             << endl;
         boost::scoped_ptr<sql::Connection> con(
             driver->connect(url, user, pass));
         con->setSchema(database);
@@ -91,7 +92,8 @@ bool check_existing_registration(int person_id, int event_id) {
     try {
         sql::Driver* driver = sql::mysql::get_driver_instance();
         /* Using the Driver to create a connection */
-        cout << "Creating to MySQL Server on " << url << " ..." << endl << endl;
+        cout << "Creating to MySQL Server on " << url << " ..." << endl
+             << endl;
         boost::scoped_ptr<sql::Connection> con(
             driver->connect(url, user, pass));
         con->setSchema(database);
@@ -136,7 +138,8 @@ bool check_ug(int person_id, int ug) {
     try {
         sql::Driver* driver = sql::mysql::get_driver_instance();
         /* Using the Driver to create a connection */
-        cout << "Creating to MySQL Server on " << url << " ..." << endl << endl;
+        cout << "Creating to MySQL Server on " << url << " ..." << endl
+             << endl;
         boost::scoped_ptr<sql::Connection> con(
             driver->connect(url, user, pass));
         con->setSchema(database);
@@ -181,7 +184,8 @@ bool add_registration(int event_id, int person_id) {
     try {
         sql::Driver* driver = sql::mysql::get_driver_instance();
         /* Using the Driver to create a connection */
-        cout << "Creating to MySQL Server on " << url << " ..." << endl << endl;
+        cout << "Creating to MySQL Server on " << url << " ..." << endl
+             << endl;
         boost::scoped_ptr<sql::Connection> con(
             driver->connect(url, user, pass));
         con->setSchema(database);
@@ -207,15 +211,14 @@ bool add_registration(int event_id, int person_id) {
         float female_count = req2->getInt("count");
         req2->close();
         if ((male_count + 1) / max_participants < 0.6 &&
-            (male_count + female_count + 1) <= 1) {
+            (male_count + female_count + 1) <= max_participants) {
             string insertQuery = "INSERT INTO registration VALUES (" +
                                  to_string(person_id) + "," +
                                  to_string(event_id) + ");";
             cout << "Running: " << insertQuery << endl;
             stmt->execute(insertQuery);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
 
@@ -301,7 +304,7 @@ int main(int argc, char const* argv[]) {
 
             if (event_id == 1) {  // Paper Presentation
                 // Checking existing registration
-                if (check_existing_registration(person_id, 1) ||
+                if (check_existing_registration(person_id, 1) &&
                     check_existing_registration(person_id, 2)) {
                     if (check_ug(person_id, 4)) {
                         if (add_registration(event_id, person_id)) {
@@ -315,7 +318,6 @@ int main(int argc, char const* argv[]) {
                             send(new_socket, limit_exceeded,
                                  strlen(limit_exceeded), 0);
                         }
-
                     } else {
                         char ug_criteria_not_met[] = "Only UG4 can register!\n";
                         send(new_socket, ug_criteria_not_met,
@@ -330,26 +332,20 @@ int main(int argc, char const* argv[]) {
                 }
             }
             if (event_id == 2) {
-                if (check_existing_registration(person_id, 1) ||
+                if (check_existing_registration(person_id, 1) &&
                     check_existing_registration(person_id, 2)) {
-                    if (check_ug(person_id, 4)) {
-                        if (add_registration(event_id, person_id)) {
-                            char registration_success[] =
-                                "Registration Successful!\n";
-                            send(new_socket, registration_success,
-                                 strlen(registration_success), 0);
-                        } else {
-                            char limit_exceeded[] =
-                                "Sorry Registrations are full!\n";
-                            send(new_socket, limit_exceeded,
-                                 strlen(limit_exceeded), 0);
-                        }
-
+                    if (add_registration(event_id, person_id)) {
+                        char registration_success[] =
+                            "Registration Successful!\n";
+                        send(new_socket, registration_success,
+                             strlen(registration_success), 0);
                     } else {
-                        char ug_criteria_not_met[] = "Only UG4 can register!\n";
-                        send(new_socket, ug_criteria_not_met,
-                             strlen(ug_criteria_not_met), 0);
+                        char limit_exceeded[] =
+                            "Sorry Registrations are full!\n";
+                        send(new_socket, limit_exceeded,
+                             strlen(limit_exceeded), 0);
                     }
+
                 } else {
                     char already_registered[] =
                         "You have already registered for this or Paper "
@@ -359,23 +355,39 @@ int main(int argc, char const* argv[]) {
                 }
             }
             if (event_id == 3) {
-                if (add_registration(event_id, person_id)) {
-                    char registration_success[] = "Registration Successful!\n";
-                    send(new_socket, registration_success,
-                         strlen(registration_success), 0);
+                if (check_existing_registration(person_id, 43)) {
+                    if (add_registration(event_id, person_id)) {
+                        char registration_success[] = "Registration Successful!\n";
+                        send(new_socket, registration_success,
+                             strlen(registration_success), 0);
+                    } else {
+                        char limit_exceeded[] = "Sorry Registrations are full!\n";
+                        send(new_socket, limit_exceeded, strlen(limit_exceeded), 0);
+                    }
                 } else {
-                    char limit_exceeded[] = "Sorry Registrations are full!\n";
-                    send(new_socket, limit_exceeded, strlen(limit_exceeded), 0);
+                    char already_registered[] =
+                        "You have already registered for this or Paper "
+                        "Event.!\n";
+                    send(new_socket, already_registered,
+                         strlen(already_registered), 0);
                 }
             }
             if (event_id == 4) {
-                if (add_registration(event_id, person_id)) {
-                    char registration_success[] = "Registration Successful!\n";
-                    send(new_socket, registration_success,
-                         strlen(registration_success), 0);
+                if (check_existing_registration(person_id, 4)) {
+                    if (add_registration(event_id, person_id)) {
+                        char registration_success[] = "Registration Successful!\n";
+                        send(new_socket, registration_success,
+                             strlen(registration_success), 0);
+                    } else {
+                        char limit_exceeded[] = "Sorry Registrations are full!\n";
+                        send(new_socket, limit_exceeded, strlen(limit_exceeded), 0);
+                    }
                 } else {
-                    char limit_exceeded[] = "Sorry Registrations are full!\n";
-                    send(new_socket, limit_exceeded, strlen(limit_exceeded), 0);
+                    char already_registered[] =
+                        "You have already registered for this or Paper "
+                        "Event.!\n";
+                    send(new_socket, already_registered,
+                         strlen(already_registered), 0);
                 }
             }
         } else {

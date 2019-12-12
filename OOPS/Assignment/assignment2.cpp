@@ -11,6 +11,32 @@
 
 using namespace std;
 
+class Employee {
+    string name;
+    double base_pay;
+    int hours_worked;
+
+   public:
+    int gethours_worked() {
+        return this->hours_worked;
+    }
+    void sethours_worked(int hours_worked) {
+        this->hours_worked = hours_worked;
+    }
+    double getbase_pay() {
+        return this->base_pay;
+    }
+    void setbase_pay(double base_pay) {
+        this->base_pay = base_pay;
+    }
+    string getname() {
+        return this->name;
+    }
+    void setname(string name) {
+        this->name = name;
+    }
+}
+
 class Company {
    private:
     int min_work_time;             // In hours
@@ -117,7 +143,8 @@ int main(int argc, char const* argv[]) {
     try {
         sql::Driver* driver = sql::mysql::get_driver_instance();
         /* Using the Driver to create a connection */
-        cout << "Creating to MySQL Server on " << url << " ..." << endl << endl;
+        cout << "Creating to MySQL Server on " << url << " ..." << endl
+             << endl;
         boost::scoped_ptr<sql::Connection> con(
             driver->connect(url, user, pass));
         con->setSchema(database);

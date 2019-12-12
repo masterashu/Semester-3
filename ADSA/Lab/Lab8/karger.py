@@ -1,8 +1,21 @@
-def Karger(G, vertices):
-    V = [set(i) for i in vertices]
+def Karger(Edges, vertices):
+    V = []
+    for v in vertices:
+        V.append(set([v]))
 
     while len(V) > 2:
-        s1, s2 = V[0],V[-1]
+        s1, s2 = V[0], V[-1]
+        x = []
+        for i, j in Edges:
+            if (i in s1 and j in s2) or (i in s2 and j in s1):
+                pass
+            else:
+                x.append((i, j))
+        V = V[1:-1] + [s1.union(s2)]
+        Edges = x
+    print(V)
+    print(Edges)
+    return len(Edges)
 
 
 if __name__ == "__main__":
@@ -11,11 +24,11 @@ if __name__ == "__main__":
     n = 6
     V = list(range(1, n+1))
     G = dict()
-    for i in range(1,n+1):
+    for i in range(1, n+1):
         for j in range(1, n+1):
-            if (i,j) in Edges:
-                G[(i,j)] = True
+            if (i, j) in Edges:
+                G[(i, j)] = True
             else:
-                G[(i,j)] = False
-    
-    Karger(G, V)
+                G[(i, j)] = False
+
+    print(Karger(Edges, V))

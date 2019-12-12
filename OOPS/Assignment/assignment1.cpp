@@ -114,7 +114,22 @@ class Event {
 };
 
 class PaperPresentation : public Event {
+    string topic1;
+    string topic2;
+
    public:
+    string gettopic2() {
+        return this->topic2;
+    }
+    void settopic2(string topic2) {
+        this->topic2 = topic2;
+    }
+    string gettopic1() {
+        return this->topic1;
+    }
+    void settopic1(string topic1) {
+        this->topic1 = topic1;
+    }
     PaperPresentation()
         : Event("Paper Presentation",
                 "2019-12-01 10:00:00",
@@ -125,7 +140,22 @@ class PaperPresentation : public Event {
 };
 
 class PosterPresentation : public Event {
+    string topic1;
+    string topic2;
+
    public:
+    string gettopic2() {
+        return this->topic2;
+    }
+    void settopic2(string topic2) {
+        this->topic2 = topic2;
+    }
+    string gettopic1() {
+        return this->topic1;
+    }
+    void settopic1(string topic1) {
+        this->topic1 = topic1;
+    }
     PosterPresentation()
         : Event("Poster Presentation",
                 "2019-12-01 10:00:00",
@@ -137,14 +167,30 @@ class PosterPresentation : public Event {
 };
 
 class Quiz : public Event {
+    int max_marks;
+
    public:
+    int getmax_marks() {
+        return this->max_marks;
+    }
+    void setmax_marks(int max_marks) {
+        this->max_marks = max_marks;
+    }
     Quiz() : Event("Quiz", "2019-12-01 15:00:00", "2019-12-01 15:30:00", 20) {}
     Quiz(string start_time, string end_time, int max_participants)
         : Event("Quiz", start_time, end_time, max_participants) {}
 };
 
 class CulturalProgram : public Event {
+    vector<string> members;
+    
    public:
+    vector<string> getmembers() {
+        return this->members;
+    }
+    void setmembers(vector<string> members) {
+        this->members = members;
+    }
     CulturalProgram()
         : Event("Cultural Program",
                 "2019-12-01 10:00:00",
@@ -188,7 +234,7 @@ class Registration {
             con->setSchema(database);
             boost::scoped_ptr<sql::Statement> stmt(con->createStatement());
             boost::scoped_ptr<sql::ResultSet> res(stmt->executeQuery(
-                "SELECT * FROM person where id=" + to_string(id) + ";"));
+                "SELECT * FROM person where id=" + to_string(id) + " AND age >= 18;"));
             if (res->next()) {
                 string person = "Id:\t" + res->getString("id") + "\nName:\t" +
                                 res->getString("name") + "\nGender:\t" +
@@ -297,7 +343,7 @@ int main() {
                     }
 
                 } else {
-                    cout << "You are not a member!\n";
+                    cout << "You do not meet the age criteria.!\n";
                 }
             }
         }
